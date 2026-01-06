@@ -113,6 +113,11 @@ Or
     <img src="./screenshots/feed_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
+- Version for people with disabilities
+<p align="center">
+    <img src="./screenshots/disabilities_version.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+</p>
+
 - Subscription page
 <p align="center">
     <img src="./screenshots/subscription_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
