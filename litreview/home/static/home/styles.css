@@ -1,0 +1,229 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: lightgray;
+    color: #0898ec;
+    font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body.high-contrast {
+    background: white;
+}
+
+.header{
+    border: 1px solid #292b33;
+    border-radius: 8px;
+    width: 100%;
+    background-color: #0898ec;
+}
+
+.header div {
+    display: inline-block;
+    position: absolute;
+}
+
+.header .eye_logo {
+    height: 25px;
+}
+
+.header p {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.header a {
+    position: absolute;
+    margin: 55px 6px;
+    color: black;
+    background: white;
+    border-radius: 0 0 8px 8px;
+    padding: 5px;
+    font-size: 16px;
+    width: 140px;
+    box-shadow: 0 0 0 2px rgba(41, 43, 51, 0.2);
+}
+
+.header a div:hover {
+    text-decoration: underline;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    border: 1px solid #bbbbbb;
+    border-radius: 8px;
+    text-align: center;
+    background-color: rgba(8, 152, 236, 5%);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.messages .error {
+    color: darkred;
+}
+
+.messages .success {
+    color: darkgreen;
+}
+
+.content form input[type="text"],
+.content form input[type="password"] {
+    width: 350px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid #0898ec;
+    height : 35px;
+    border-radius: 16px;
+}
+
+.content input:focus {
+    outline: none;
+    border: 2px solid #0898ec;
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
+}
+
+.connect_block {
+    position: relative;
+}
+
+.subscription_button, .connection_button {
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #0898ec;
+    font-size: 16px;
+    background-color: #0898ec;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+.subscribe_button, .cancel_button {
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #0898ec;
+    padding: 8px 25px;
+    background-color: #0898ec;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.cancel_button,
+.subscription_button {
+    position: static;
+}
+
+.subscribe_button:visited, .cancel_button:visited {
+    color: white;
+}
+
+.subscribe_button:hover, .cancel_button:hover, .subscription_button:hover, .connection_button:hover {
+    background-color: #067fc4;
+    transform: translateY(-1px);
+    font-weight: bold;
+    border: 1px solid #292b33;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #0898ec;
+    border: 1px solid #292b33;
+    border-radius: 8px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+
+.footer p {
+    font-size: 11px;
+    color: white;
+}
+
+/* wcag */
+body.high-contrast p, body.high-contrast h2 {
+    color: black;
+}
+
+body.high-contrast .content,
+body.high-contrast .header,
+body.high-contrast .footer {
+    background: white;
+}
+
+body.high-contrast button, body.high-contrast input[type="submit"] {
+    color: white;
+    background: black;
+    border: 1px solid white;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+body.high-contrast button:hover, body.high-contrast input[type="submit"]:hover {
+    background: black;
+}
+
+body.high-contrast a:visited {
+    color: white;
+}
+
+body.high-contrast .header a {
+    display: block;
+    position: absolute;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    text-decoration: underline;
+}
+
+body.high-contrast .content form input[type="text"],
+body.high-contrast .content form input[type="password"] {
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+body.high-contrast .content input:focus {
+    outline: none;
+    border: 2px solid #292b33;
+    box-shadow: 0 0 0 3px rgba(41, 43, 51, 0.2);
+
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 100px;
+    }
+}

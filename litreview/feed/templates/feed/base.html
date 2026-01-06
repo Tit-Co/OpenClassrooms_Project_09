@@ -1,0 +1,34 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LitReview - Feed</title>
+        <link id="css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
+    </head>
+    <body>
+        <section class="header">
+            <a id="contrast-btn" title="Bouton contraste" href="#">
+                <img class="eye_logo"
+                     alt="Image oeil"
+                     title="Image oeil"
+                     src="{% static 'home/images/eye.png' %}">
+                <div>CONTRASTE +</div></a>
+            <p>LITReview</p>
+        </section>
+        {% block content %}{% endblock %}
+
+        <footer class="footer">
+            <p>© 2026 - Nicolas MARIE - OpenClassrooms</p>
+        </footer>
+    <script>
+        const btn = document.getElementById('contrast-btn');
+        if (btn) {
+            btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            document.body.classList.toggle('high-contrast');
+            });
+        }
+    </script>
+    </body>
+</html>

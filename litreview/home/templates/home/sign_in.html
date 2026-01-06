@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<div class="messages">
+    {% if messages %}
+    <ul class="tr_messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+<section class="content">
+    <div class="subscribe_block">
+        <h2>Inscrivez-vous</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ signin_form.as_p }}
+            <div class="form-actions">
+                <button type="button"
+                        class="cancel_button"
+                        title="Bouton retour"
+                        onclick="window.location.href='../'">
+                    Retourner
+                </button>
+
+                <button type="submit"
+                        class="subscription_button"
+                        title="Bouton s'inscrire">
+                    S'inscrire
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

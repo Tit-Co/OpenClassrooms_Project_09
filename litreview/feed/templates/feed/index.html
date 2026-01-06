@@ -1,0 +1,17 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<section class="content">
+
+</section>
+
+{% endblock %}

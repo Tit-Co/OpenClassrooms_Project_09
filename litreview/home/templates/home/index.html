@@ -1,1 +1,28 @@
-<h1>Welcome in LitReview</h1>
+{% extends 'home/base.html' %}
+{% block content %}
+
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<section class="content">
+    <div class="subscribe_block">
+        <h2>Inscrivez-vous maintenant</h2>
+        <button class="subscribe_button" title="S'inscrire" onclick="window.location.href ='./sign_in/'">S'inscrire</button>
+    </div>
+    <div class="connect_block">
+        <h2>Connectez-vous</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{login_form.as_p}}
+            <input class="connection_button" title="Se connecter" type="submit" value="Se connecter">
+        </form>
+    </div>
+</section>
+
+{% endblock %}
