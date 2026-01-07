@@ -8,9 +8,9 @@
 This project was completed as part of the "Python Developer" path at OpenClassrooms.
 
 The goal was to develop a web application with Django capable of:
-- Publishing critics of books or articles.
-- Requesting critics on a book or a defined article.
-- Looking for interesting books to read based on critics from others users.
+- Publishing reviews of books or articles.
+- Requesting reviews on a book or a defined article.
+- Looking for interesting books to read based on reviews from others users.
 
 The application must:
 - Comply with WCAG guidelines for users with disabilities
@@ -22,11 +22,11 @@ The application must:
 
 ### <u>Sign in and log in, log out</u>
 
-- The app allows the user to sign in or log in from the homepage, and to log out
+- The app allows the user to sign up or log in from the homepage, and to log out
 
 ### <u>Tickets, comments, feeds and followers</u>
 
-- The app displays tickets, comments, critics in the feed and allows the user to follow others users
+- The app displays tickets, comments, reviews in the feed and allows the user to follow others users
 
 ### <u>Add, update, delete tickets and comments</u>
 
@@ -51,7 +51,7 @@ The application must:
 `git clone https://github.com/Tit-Co/OpenClassrooms_Project_04.git`
 
 ### - Navigate into the project directory :
-`cd OpenClassrooms_Project_04`
+`cd OpenClassrooms_Project_09`
 
 ### - Create a virtual environment and dependencies :
 ### Option 1 - with [uv](https://docs.astral.sh/uv/)
@@ -98,12 +98,12 @@ Or
 
 ## EXAMPLES
 
-- Home page (sign in or log in)
+- Home page (sign up or log in)
 <p align="center">
     <img src="./screenshots/homepage_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
-- Sign in form
+- Sign up form
 <p align="center">
     <img src="./screenshots/signin_form_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
@@ -118,17 +118,12 @@ Or
     <img src="./screenshots/disabilities_version.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
-- Subscription page
-<p align="center">
-    <img src="./screenshots/subscription_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-</p>
-
 - Tickets creation page
 <p align="center">
     <img src="./screenshots/tickets_creation_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
-- Critics creation page
+- Reviews creation page
 <p align="center">
     <img src="./screenshots/critics_creation_page_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
     <img src="./screenshots/critics_creation_page_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
@@ -139,7 +134,7 @@ Or
     <img src="./screenshots/posts_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
-- Update posts and critics pages
+- Update posts and reviews pages
 <p align="center">
     <img src="./screenshots/update_pages_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
     <img src="./screenshots/update_pages_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
