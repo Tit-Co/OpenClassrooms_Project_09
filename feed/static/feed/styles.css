@@ -1,0 +1,27 @@
+nav a{
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+nav a:visited{
+    color: white;
+}
+
+/* WCAG */
+body.high-contrast nav a, body.high-contrast .header nav a:visited {
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+body.high-contrast nav a:hover {
+    text-decoration: underline;
+}

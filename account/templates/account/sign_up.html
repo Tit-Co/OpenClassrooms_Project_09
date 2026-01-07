@@ -1,4 +1,4 @@
-{% extends 'home/base.html' %}
+{% extends 'core/base.html' %}
 {% block content %}
 
 <div class="messages">
@@ -15,12 +15,12 @@
         <h2>Inscrivez-vous</h2>
         <form action="" method="POST">
             {% csrf_token %}
-            {{ signin_form.as_p }}
+            {{ signup_form.as_p }}
             <div class="form-actions">
                 <button type="button"
                         class="cancel_button"
                         title="Bouton retour"
-                        onclick="window.location.href='../'">
+                        onclick="window.location.href='../home/'">
                     Retourner
                 </button>
 

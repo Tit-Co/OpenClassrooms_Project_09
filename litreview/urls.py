@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from home import views
+from core import views as core_views
+from account import views as account_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.index, name='index'),
-    path('home/sign_in/', views.sign_in, name='sign-in'),
+    path('home/', core_views.index, name='index'),
+    path('sign_up/', account_views.sign_up, name='sign-up'),
     path('feed/', include('feed.urls')),
+    path('log_out/', account_views.log_out, name='log-out'),
 ]

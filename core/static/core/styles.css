@@ -38,8 +38,7 @@ body.high-contrast {
     color: white;
 }
 
-.header a {
-    display: block;
+.header .contraste-btn {
     position: absolute;
     margin: 55px 6px;
     color: black;
@@ -51,8 +50,17 @@ body.high-contrast {
     box-shadow: 0 0 0 2px rgba(41, 43, 51, 0.2);
 }
 
-.header a div:hover {
+.header .contraste-btn div:hover {
     text-decoration: underline;
+}
+
+.header nav {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -50px;
+    gap: 10px;
 }
 
 .content {
@@ -84,7 +92,74 @@ body.high-contrast {
     color: darkgreen;
 }
 
+.content form input[type="text"],
+.content form input[type="password"] {
+    width: 350px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid #0898ec;
+    height : 35px;
+    border-radius: 16px;
+}
 
+.content input:focus {
+    outline: none;
+    border: 2px solid #0898ec;
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
+}
+
+.connect_block {
+    position: relative;
+}
+
+.subscription_button, .connection_button {
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #0898ec;
+    font-size: 16px;
+    background-color: #0898ec;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+.subscribe_button, .cancel_button {
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #0898ec;
+    padding: 8px 25px;
+    background-color: #0898ec;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.cancel_button,
+.subscription_button {
+    position: static;
+}
+
+.subscribe_button:visited, .cancel_button:visited {
+    color: white;
+}
+
+.subscribe_button:hover, .cancel_button:hover, .subscription_button:hover, .connection_button:hover {
+    background-color: #067fc4;
+    transform: translateY(-1px);
+    font-weight: bold;
+    border: 1px solid #292b33;
+    cursor: pointer;
+}
 
 .footer {
     background-color: #0898ec;
@@ -102,7 +177,6 @@ body.high-contrast {
 }
 
 /* wcag */
-
 body.high-contrast p, body.high-contrast h2 {
     color: black;
 }
@@ -129,7 +203,7 @@ body.high-contrast a:visited {
     color: white;
 }
 
-body.high-contrast .header a {
+body.high-contrast .header .contraste-btn {
     display: block;
     position: absolute;
     font-size: 16px;

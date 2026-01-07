@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LitReview - Home</title>
-        <link id="css" rel="stylesheet" href="{% static 'home/styles.css' %}">
+        <link id="core_css" rel="stylesheet" href="{% static 'core/styles.css' %}">
     </head>
     <body>
         <section class="header">
-            <a id="contrast-btn" title="Bouton contraste" href="#">
+            <a class="contraste-btn" id="contrast-btn" title="Bouton contraste" href="#">
                 <img class="eye_logo"
                      alt="Image oeil"
                      title="Image oeil"
-                     src="{% static 'home/images/eye.png' %}"><div>CONTRASTE +</div></a>
+                     src="{% static 'core/images/eye.png' %}"><div>CONTRASTE +</div></a>
             <p>LITReview</p>
         </section>
         {% block content %}{% endblock %}

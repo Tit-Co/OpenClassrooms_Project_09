@@ -3,18 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LitReview - Feed</title>
-        <link id="css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
+        <title>LitReview - Home</title>
+        <link id="core_css" rel="stylesheet" href="{% static 'core/styles.css' %}">
+        <link id="feed_css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
     </head>
     <body>
         <section class="header">
-            <a id="contrast-btn" title="Bouton contraste" href="#">
+            <a class="contraste-btn" id="contrast-btn" title="Bouton contraste" href="#">
                 <img class="eye_logo"
                      alt="Image oeil"
                      title="Image oeil"
-                     src="{% static 'home/images/eye.png' %}">
-                <div>CONTRASTE +</div></a>
+                     src="{% static 'core/images/eye.png' %}"><div>CONTRASTE +</div></a>
             <p>LITReview</p>
+            <nav>
+                <a title="Bouton flux" href="">Flux</a>
+                <a title="Bouton posts" href="">Posts</a>
+                <a title="Bouton abonnements" href="">Abonnements</a>
+                <a title="Bouton déconnexion" href="../log_out/">Se déconnecter</a>
+            </nav>
         </section>
         {% block content %}{% endblock %}
 
