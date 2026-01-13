@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="content">
+    <div class="create_review_block">
+        <h2>Créer une critique</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="review_article">
+                <h3>Livre / Article</h3>
+                <p>
+                    <label>Titre</label>
+                    {{ ticket_form.title }}
+                </p>
+                <p>
+                    <label>Description</label>
+                    {{ ticket_form.description }}
+                </p>
+                <p>
+                    <label>Image</label>
+                </p>
+                <p>
+                    <label for="image-upload" class="custom-file-btn">Télécharger fichier</label>
+                    <span id="file-name">Aucun fichier sélectionné</span>
+                    {{ ticket_form.image }}
+                </p>
+            </div>
+
+            <div class="review_comment">
+                <h3>Critique</h3>
+                <p>
+                    <label>Titre</label>
+                    {{ review_form.headline }}
+                </p>
+                <p>
+                    <label>Note</label>
+                    {{ review_form.rating }}
+                </p>
+                <p>
+                    <label>Commentaire</label>
+                    {{ review_form.body }}
+                </p>
+                <p class="submit_p">
+                    <input class="ticket_submit_button" title="Créer un ticket" type="submit" value="Envoyer">
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+document.getElementById("image-upload").addEventListener("change", function () {
+    const fileName = this.files.length > 0
+        ? this.files[0].name
+        : "Aucun fichier sélectionné";
+    document.getElementById("file-name").textContent = fileName;
+});
+</script>
+{% endblock %}

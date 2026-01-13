@@ -1,0 +1,35 @@
+<div class="review_details">
+    {% if request.user == review.user%}
+        <h4>Vous avez publié une critique</h4>
+    {% else %}
+        <h4>{{ review.user }} a publié une critique</h4>
+    {% endif %}
+
+    <h5>{{ review.time_created }}</h5>
+
+    <div class="review_title_rating">
+        <p class="ticket_title">{{ review.headline }}</p><p>-</p>
+        {% if review.rating == 0 %}
+            <p class="star">✰ ✰ ✰ ✰ ✰</p>
+        {% endif %}
+        {% if review.rating == 1 %}
+            <P class="star">✮ ✰ ✰ ✰ ✰</P>
+        {% endif %}
+        {% if review.rating == 2 %}
+            <P class="star">✮ ✮ ✰ ✰ ✰</P>
+        {% endif %}
+        {% if review.rating == 3 %}
+            <P class="star">✮ ✮ ✮ ✰ ✰</P>
+        {% endif %}
+        {% if review.rating == 4 %}
+            <P class="star">✮ ✮ ✮ ✮ ✰</P>
+        {% endif %}
+        {% if review.rating == 5 %}
+            <P class="star">✮ ✮ ✮ ✮ ✮</P>
+        {% endif %}
+    </div>
+
+    <p class="description">{{ review.body }}</p><hr>
+
+    {% include 'feed/ticket_details.html' with ticket=review.ticket%}
+</div>

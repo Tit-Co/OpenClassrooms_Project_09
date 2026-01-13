@@ -1,9 +1,13 @@
+.header .contraste-btn {
+    margin: 65px 6px;
+}
+
 nav a{
     display: inline-block;
     color: white;
     font-weight: bold;
     padding: 15px;
-    font-size: 14px;
+    font-size: 12px;
     text-decoration: none;
 }
 
@@ -15,13 +19,340 @@ nav a:visited{
     color: white;
 }
 
+.content {
+    padding: 0 30px 30px 30px;
+}
+
+.content .review_article, .content .review_comment {
+
+    border: 1px solid #0898ec;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(8, 152, 236, 0.2);
+    margin: 2px;
+}
+
+.content form p {
+    text-align: center;
+}
+
+.content form input[type="text"] {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    padding: 5px;
+    width: 300px;
+}
+
+.custom-file-btn, .ticket_submit_button {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #0898ec;
+    font-size: 16px;
+    background-color: #0898ec;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.custom-file-btn:hover, .ticket_submit_button:hover {
+    background-color: #067fc4;
+    transform: translateY(-1px);
+    font-weight: bold;
+    border: 1px solid #292b33;
+    cursor: pointer;
+}
+
+.content h3 {
+    text-align: center;
+}
+
+.content hr {
+    color: rgba(8, 152, 236, 0.5);
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.content form .file-input {
+    display: none;
+}
+
+.content .ticket_image {
+    display: flex;
+    justify-content: center;
+}
+
+.content .ticket_image img{
+    max-width: 300px;
+    border-radius: 8px;
+    margin: 15px;
+}
+
+.content form .submit_p {
+    text-align: center;
+}
+
+.content form textarea {
+    margin-top: 10px;
+    text-align: left;
+    color: black;
+    font-weight: normal;
+    background-color: white;
+    border: 1px solid #0898ec;
+    height : 250px;
+    border-radius: 16px;
+    padding: 5px;
+    width: 300px;
+}
+
+.content form textarea:focus {
+    outline: none;
+    border: 1px solid #0898ec;
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
+}
+
+.content form span {
+    font-size: 12px;
+}
+
+.content form .form-radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.form-radio label{
+    display: flex;
+    justify-content: left;
+}
+
+.content .ticket_details {
+    margin: 20px 10px;
+    border: 1px solid #F28C38;
+    border-radius: 8px;
+    padding: 0 10px;
+    color: black;
+    background-color: rgba(242, 140, 56, 0.2);
+    border-left: 6px solid #F28C38;
+    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
+    font-size: 16px;
+}
+
+.content .ticket_details .ticket_title, .content .review_details .ticket_title{
+    font-weight: bold;
+}
+
+.content .ticket_details h4, .content .review_details h4 {
+    text-align: center;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.content .ticket_details h5, .content .review_details h5 {
+    margin: -20px 5px 0 0;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.content .review_details {
+    margin: 0 10px;
+    border: 1px solid #0898ec;
+    border-radius: 8px;
+    padding: 0 5px 10px 5px;
+    color: black;
+    background-color: rgba(8, 152, 236, 5%);
+    border-left: 6px solid #0898ec;
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
+    font-size: 16px;
+}
+
+.content .review_details .review_title_rating {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+    justify-content: center;
+}
+
+.content .description {
+    margin-top: -5px;
+}
+
+.content .star {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    color: #E67E22;
+    background-color: rgba(8, 152, 236, 0.1);
+    border-radius: 16px;
+    padding: 0 5px;
+    border: 1px solid #F28C38;
+}
+
+.content .star:hover {
+    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
+}
+
 /* WCAG */
 body.high-contrast nav a, body.high-contrast .header nav a:visited {
     color: black;
-    font-size: 16px;
     text-decoration: none;
 }
 
 body.high-contrast nav a:hover {
     text-decoration: underline;
+}
+
+body.high-contrast .content .review_article, body.high-contrast .content .review_comment {
+    border: 1px solid black;
+}
+
+body.high-contrast h3 {
+    color: black;
+}
+
+body.high-contrast textarea {
+    border: 1px solid black;
+}
+
+body.high-contrast textarea:focus {
+    outline: none;
+    border: 1px solid #292b33;
+    box-shadow: 0 0 0 3px rgba(41, 43, 51, 0.2);
+
+}
+
+body.high-contrast .custom-file-btn {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    font-size: 16px;
+}
+
+body.high-contrast label {
+    color: black;
+    font-size: 18px;
+}
+
+body.high-contrast .content .ticket_details {
+    background-color: rgba(242, 140, 56, 0.1);
+}
+
+body.high-contrast .content .star {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Tablet */
+@media (min-width: 415px) and (max-width: 810px) {
+    .header .contraste-btn {
+        margin: 47px 6px;
+    }
+
+
+    .header nav {
+        margin-top: -48px;
+        justify-content: right;
+        gap: 0;
+    }
+
+    .content form input[type="text"] {
+        width: 700px;
+    }
+
+    .content form textarea {
+        width: 700px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 811px) {
+    .content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0px;
+    }
+
+    .header .contraste-btn {
+        margin: 45px 6px;
+    }
+
+
+    .content h3 {
+        text-align: left;
+    }
+
+    .content .review_article, .content .review_comment {
+        padding: 0 20px 20px 20px;
+    }
+
+    .content form p, .content p{
+        text-align: left;
+    }
+
+    .content form .submit_p {
+        text-align: right;
+    }
+
+    .content form input[type="text"] {
+        width: 800px;
+    }
+
+    .content form textarea {
+        width: 800px;
+    }
+
+    .content form .form-radio {
+        gap: 65px;
+        margin-left: 20px;
+        justify-content: left;
+    }
+
+    .content .ticket_details {
+        width: 650px;
+        margin: 20px 60px;
+        justify-content: left;
+    }
+
+    .content .review_details {
+        width: 800px;
+        margin: 20px 20px;
+        justify-content: left;
+    }
+
+    .content .ticket_details h4, .content .review_details h4 {
+        text-align: left;
+    }
+
+    .content .ticket_details h5, .content .review_details h5 {
+        margin: -40px 5px 0 0;
+        justify-content: right;
+        text-align: right;
+    }
+
+    .content .ticket_image {
+        display: flex;
+        justify-content: left;
+    }
+
+    .content .ticket_image img{
+        max-width: 600px;
+    }
+
+    .content .review_details .review_title_rating {
+        justify-content: left;
+    }
+
+    /* WCAG */
+    body.high-contrast nav a, body.high-contrast .header nav a:visited {
+        font-size: 14px;
+    }
 }

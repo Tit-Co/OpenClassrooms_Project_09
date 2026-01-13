@@ -1,10 +1,14 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LitReview - Home</title>
+        <title>LitReview - Feed</title>
         <link id="core_css" rel="stylesheet" href="{% static 'core/styles.css' %}">
+        {% if user.is_authenticated %}
+            <link id="feed_css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
+        {% endif %}
     </head>
     <body>
         <section class="header">
@@ -14,6 +18,9 @@
                      title="Image oeil"
                      src="{% static 'core/images/eye.png' %}"><div>CONTRASTE +</div></a>
             <p>LITReview</p>
+            {% if user.is_authenticated %}
+                {% include 'feed/navbar.html' %}
+            {% endif %}
         </section>
         {% block content %}{% endblock %}
 

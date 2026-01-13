@@ -1,7 +1,7 @@
-{% extends 'feed/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 
-
+<br>
 {% if messages %}
 <div class="messages">
     {% for message in messages %}
@@ -11,7 +11,13 @@
 {% endif %}
 
 <section class="content">
-
+    {% for post in feed_posts %}
+        {% if post.is_ticket %}
+            {% include 'feed/ticket_details.html' with ticket=post %}
+        {% elif post.is_review %}
+            {% include 'feed/review_details.html' with review=post %}
+        {% endif %}
+    {% endfor %}
 </section>
 
 {% endblock %}

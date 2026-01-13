@@ -20,6 +20,7 @@ body.high-contrast {
     border-radius: 8px;
     width: 100%;
     background-color: #0898ec;
+
 }
 
 .header div {
@@ -36,11 +37,12 @@ body.high-contrast {
     text-align: center;
     font-weight: bold;
     color: white;
+    margin-top: 5px;
 }
 
 .header .contraste-btn {
     position: absolute;
-    margin: 55px 6px;
+    margin: 44px 6px;
     color: black;
     background: white;
     border-radius: 0 0 8px 8px;
@@ -56,10 +58,10 @@ body.high-contrast {
 
 .header nav {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: -50px;
+    margin-top: -25px;
     gap: 10px;
 }
 
@@ -74,7 +76,8 @@ body.high-contrast {
     border: 1px solid #bbbbbb;
     border-radius: 8px;
     text-align: center;
-    background-color: rgba(8, 152, 236, 5%);
+    /*background-color: rgba(8, 152, 236, 1%);*/
+    background-color: rgba(255, 255, 255, 20%);
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
@@ -94,7 +97,6 @@ body.high-contrast {
 
 .content form input[type="text"],
 .content form input[type="password"] {
-    width: 350px;
     text-align: center;
     color: black;
     font-weight: bold;
@@ -227,12 +229,51 @@ body.high-contrast .content input:focus {
 
 }
 
+/* Tablet */
+@media (min-width: 415px) and (max-width: 810px) {
+    .content form input[type="text"],
+    .content form input[type="password"] {
+        width: 300px;
+    }
+
+    .header p {
+        margin-top: 10px;
+    }
+
+    .header .contraste-btn {
+        margin: 48px 6px;
+    }
+}
+
 /* Desktop */
-@media (min-width: 768px) {
+@media (min-width: 811px) {
     .content {
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
         gap: 100px;
+    }
+
+    .header p {
+        margin-top: 10px;
+    }
+
+    .header nav {
+        margin-top: -50px;
+        justify-content: right;
+    }
+
+    .header .contraste-btn {
+        margin: 48px 6px;
+    }
+
+    .content form input[type="text"],
+    .content form input[type="password"] {
+        width: 350px;
+    }
+
+    /* WCAG */
+    body.high-contrast .contraste-btn {
+        margin: 47px 6px;
     }
 }

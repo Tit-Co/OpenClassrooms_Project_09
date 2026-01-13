@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="content">
+    <div class="create_review_block">
+        <h2>Modifier votre critique</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="review_article">
+                <h3>Vous êtes en train de poster en réponse à</h3><br>
+                {% include 'feed/ticket_details_for_review.html' %}
+            </div>
+
+            <div class="review_comment">
+                <h3>Critique</h3>
+                <p>
+                    <label>Titre</label><br>
+                    {{ review_form.headline }}
+                </p>
+                <p>
+                    <label>Note</label><br>
+                    {{ review_form.rating }}
+                </p>
+                <p>
+                    <label>Commentaire</label><br>
+                    {{ review_form.body }}
+                </p>
+                <p class="submit_p">
+                    <input class="ticket_submit_button" title="Modifier une critique" type="submit" value="Envoyer">
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
