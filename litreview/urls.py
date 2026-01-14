@@ -21,15 +21,16 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from core import views as core_views
-from account import views as account_views
+from accounts import views as accounts_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', core_views.index, name='index'),
-    path('sign_up/', account_views.sign_up, name='sign-up'),
+    path('log_in/', accounts_views.log_in, name='log-in'),
+    path('sign_up/', accounts_views.sign_up, name='sign-up'),
     path('feed/', include('feed.urls')),
-    path('log_out/', account_views.log_out, name='log-out'),
+    path('log_out/', accounts_views.log_out, name='log-out'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

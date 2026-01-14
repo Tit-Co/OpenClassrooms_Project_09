@@ -48,13 +48,16 @@ def update_ticket(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
 
     if request.method == 'POST':
-        ticket_form = TicketForm(request.POST, request.FILES, instance=ticket)
-        if ticket_form.is_valid():
-            ticket_form.save()
-            messages.success(request, "Ticket correctement mis à jour.")
-            return redirect('feed:feed')
+        if ticket.user == request.user:
+            ticket_form = TicketForm(request.POST, request.FILES, instance=ticket)
+            if ticket_form.is_valid():
+                ticket_form.save()
+                messages.success(request, "Ticket correctement mis à jour.")
+            else:
+                messages.error(request, "La mise à jour du ticket a échoué. Veuillez réessayer.")
         else:
-            messages.error(request, "La mise à jour du ticket a échoué. Veuillez réessayer.")
+            messages.success(request, "Vous ne pouvez pas modifier ce ticket.")
+        return redirect('feed:feed')
     else:
         ticket_form = TicketForm(instance=ticket)
 
@@ -64,8 +67,11 @@ def update_ticket(request, ticket_id):
 def delete_ticket(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
-        ticket.delete()
-        messages.success(request, "Ticket correctement supprimé.")
+        if ticket.user == request.user:
+            ticket.delete()
+            messages.success(request, "Ticket correctement supprimé.")
+        else:
+            messages.success(request, "Vous ne pouvez pas supprimer ce ticket.")
         return redirect('feed:feed')
 
     return render(request, 'feed/delete_ticket.html', {'ticket': ticket})

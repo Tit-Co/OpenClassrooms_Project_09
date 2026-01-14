@@ -1,10 +1,10 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LitReview - Feed</title>
+        <title>LitReview</title>
         <link id="core_css" rel="stylesheet" href="{% static 'core/styles.css' %}">
         {% if user.is_authenticated %}
             <link id="feed_css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
