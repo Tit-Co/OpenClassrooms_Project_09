@@ -1,0 +1,40 @@
+{% load feed_extras %}
+<div class="ticket_details">
+    {% if target == 'post' %}
+        <h4>{% get_poster_display ticket.user %} publié un ticket</h4>
+    {% elif target == 'feed' or target == 'review' %}
+        <h4>{% get_poster_display ticket.user %} demandé une critique</h4>
+    {% endif %}
+
+    {% if has_time %}
+        <h5>{{ ticket.time_created }}</h5>
+    {% endif %}
+
+    <p class="ticket_title">{{ ticket.title }}</p>
+
+    <p class="description">{{ ticket.description }}</p>
+
+    <div class="ticket_image">
+        {% if ticket.image %}
+            <img alt="Image du ticket - {{ticket.title}}" title="Image du ticket - {{ticket.title}}" src="{{ticket.image.url}}">
+        {% endif %}
+    </div>
+
+    {% if target == 'post' %}
+        <div class="modify_buttons">
+            {% if perms.feed.change_ticket %}
+                <a class="update_button" title="Bouton Modifier" href="{% url 'feed:update-ticket' ticket_id=ticket.id %}">Modifier</a>
+            {% endif %}
+            {% if perms.feed.delete_ticket %}
+                <a class="delete_button" title="Bouton Supprimer" href="{% url 'feed:delete-ticket' ticket_id=ticket.id %}">Supprimer</a>
+            {% endif %}
+        </div>
+    {% elif target == 'feed' %}
+        {% if not ticket.user_has_reviewed %}
+            <a class="add_review_button"
+               title="Bouton Créer une critique"
+               href="{% url 'feed:create-review-by-answer' ticket_id=ticket.id %}">Créer une critique</a>
+        {% endif %}
+    {% endif %}
+
+</div>

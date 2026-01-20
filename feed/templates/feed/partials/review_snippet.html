@@ -1,9 +1,6 @@
+{% load feed_extras %}
 <div class="review_details">
-    {% if request.user == review.user%}
-        <h4>Vous avez publié une critique</h4>
-    {% else %}
-        <h4>{{ review.user }} a publié une critique</h4>
-    {% endif %}
+    <h4>{% get_poster_display review.user %} publié une critique</h4>
 
     <h5>{{ review.time_created }}</h5>
 
@@ -30,6 +27,10 @@
     </div>
 
     <p class="description">{{ review.body }}</p><hr>
+    {% if target == 'feed' %}
+        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='feed' has_time=False %}
 
-    {% include 'feed/ticket_details.html' with ticket=review.ticket%}
+    {% elif target == 'post' %}
+        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='post' has_time=False %}
+    {% endif %}
 </div>

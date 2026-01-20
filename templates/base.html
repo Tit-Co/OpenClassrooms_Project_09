@@ -19,7 +19,7 @@
                      src="{% static 'core/images/eye.png' %}"><div>CONTRASTE +</div></a>
             <p>LITReview</p>
             {% if user.is_authenticated %}
-                {% include 'feed/navbar.html' %}
+                {% include './navbar.html' %}
             {% endif %}
         </section>
         {% block content %}{% endblock %}

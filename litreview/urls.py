@@ -32,5 +32,6 @@ urlpatterns = [
     path('feed/', include('feed.urls')),
     path('log_out/', accounts_views.log_out, name='log-out'),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

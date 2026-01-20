@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<section class="content">
+    <div class="create_ticket_block">
+        <h2>Abonnements</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="follow_title">
+                <label>Suivre d'autres utilisateurs</label><br>
+                {{ follow_form.username }}
+            </p>
+
+            <p class="follow_submit_p">
+                <input class="ticket_submit_button" title="Suivre un utilisateur" type="submit" value="Envoyer">
+            </p>
+            <br>
+            <hr class="follow_hr">
+
+            <p class="p_following">
+                <label>Abonnements</label>
+            </p>
+            <div class="follow">
+                {% for follow in following %}
+                    <p class="following">{{ follow.followed_user.username }}</p>
+                    <a href="">Se désabonner</a>
+                    <br>
+                {% endfor %}
+            </div>
+            <p class="p_followedby">
+                <label>Abonnés</label>
+            </p>
+            <div class="follow">
+                {% for follow in followed_by %}
+                    <p class="followedby">{{ follow.user.username }}</p>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

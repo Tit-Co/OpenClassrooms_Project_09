@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<br>
+{% if messages %}
 <div class="messages">
-    {% if messages %}
-    <ul class="tr_messages">
-        {% for message in messages %}
-        <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    {% for message in messages %}
+    <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
 </div>
+{% endif %}
+
 <section class="content">
     <div class="subscribe_block">
         <h2>Inscrivez-vous</h2>

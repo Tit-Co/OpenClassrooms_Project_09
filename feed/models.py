@@ -13,9 +13,8 @@ class Ticket(models.Model):
     def __str__(self):
         return self.title
 
-    @staticmethod
-    def is_ticket():
-        return True
+    def has_user_review(self, user):
+        return self.review_set.filter(user=user).exists()
 
 
 class Review(models.Model):
@@ -29,10 +28,6 @@ class Review(models.Model):
 
     def __str__(self):
         return self.headline
-
-    @staticmethod
-    def is_review():
-        return True
 
 
 class UserFollows(models.Model):

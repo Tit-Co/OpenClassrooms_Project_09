@@ -152,6 +152,8 @@ nav a:visited{
     text-align: center;
     font-size: 15px;
     font-weight: normal;
+    font-style: italic;
+    text-decoration: underline;
 }
 
 .content .ticket_details h5, .content .review_details h5 {
@@ -199,6 +201,157 @@ nav a:visited{
 .content .star:hover {
     box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
 }
+
+.content .follow {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.content .form-input {
+    width: 300px;
+}
+
+.content .following, .content .followedby {
+    display: inline-block;
+    margin: 0;
+    border-radius: 16px;
+    font-weight: bold;
+    padding: 5px;
+    background-color: white;
+}
+
+.content .following {
+    border: 1px solid #0898ec;
+    border-left: 6px solid #0898ec;
+    border-right: 6px solid #0898ec;
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.3);
+    color:#0898ec;
+}
+
+.content .followedby{
+    border: 1px solid #F28C38;
+    border-left: 6px solid #F28C38;
+    border-right: 6px solid #F28C38;
+    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
+    color: #F28C38;
+}
+
+.content .follow a {
+    border: 1px solid #0898ec;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #0898ec;
+    padding: 5px;
+    color: white;
+    width: 140px;
+    height: 35px;
+    margin-left: 75px;
+}
+
+.content .follow a:hover {
+    font-size: 18px;
+    transform: translateY(-1px);
+}
+
+.content .follow a:visited {
+    color: white;
+}
+
+.content .p_following {
+    color: #0898ec;
+}
+
+.content .p_followedby {
+    color: #F28C38;
+}
+
+.content .follow_title {
+    color: black;
+}
+
+.content .follow_title input[type="text"]{
+    border: 1px solid black;
+}
+
+.content .follow_submit_p {
+    text-align: center;
+}
+
+.content .follow_hr {
+    color: black;
+    width: 100%;
+}
+
+.content .follow_submit_p input[type="submit"]{
+    background-color: black;
+    border: 1px solid black;
+}
+
+.content .ticket_details .add_review_button {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 8px 25px;
+    width: 190px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #F28C38;
+    background-color: #F28C38;
+}
+
+.content .ticket_details .add_review_button:hover {
+    transform: translateY(-1px);
+    font-weight: bold;
+    align-items: center;
+}
+
+.content .modify_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.content .ticket_details .modify_buttons .update_button,
+.content .ticket_details .modify_buttons .delete_button,
+.content .review_details .modify_buttons .update_button,
+.content .review_details .modify_buttons .delete_button {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 8px 25px;
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.content .ticket_details .modify_buttons .update_button, .content .ticket_details .modify_buttons .delete_button {
+    border: 1px solid #F28C38;
+    background-color: #F28C38;
+}
+
+.content .review_details .modify_buttons .update_button, .content .review_details .modify_buttons .delete_button {
+    border: 1px solid #0898ec;
+    background-color: #0898ec;
+}
+
+.content .ticket_details .modify_buttons .update_button:hover,
+.content .ticket_details .modify_buttons .delete_button:hover,
+.content .review_details .modify_buttons .update_button:hover,
+.content .review_details .modify_buttons .delete_button:hover {
+    transform: translateY(-1px);
+    font-weight: bold;
+}
+
 
 /* WCAG */
 body.high-contrast nav a, body.high-contrast .header nav a:visited {
@@ -249,6 +402,20 @@ body.high-contrast .content .star {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+body.high-contrast .content .ticket_details .add_review_button {
+    font-size: 16px;
+    font-weight: bold;
+    color: #F28C38;
+    border: 1px solid #F28C38;
+    background-color: white;
+    width: 230px;
+    height: 40px;
+}
+
+body.high-contrast .content .ticket_details .add_review_button:hover {
+    font-size: 18px;
+}
+
 
 /* Tablet */
 @media (min-width: 415px) and (max-width: 810px) {
@@ -270,6 +437,26 @@ body.high-contrast .content .star {
     .content form textarea {
         width: 700px;
     }
+
+    .content .follow a {
+        margin-left: 280px;
+    }
+
+    .content .ticket_details {
+        width: 650px;
+        margin: 20px 40px;
+        justify-content: center;
+    }
+
+    .content .review_details {
+        width: 750px;
+        margin: 20px 20px;
+        justify-content: center;
+    }
+
+    .content .ticket_image img{
+        max-width: 500px;
+    }
 }
 
 /* Desktop */
@@ -278,7 +465,7 @@ body.high-contrast .content .star {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        gap: 0px;
+        gap: 0;
     }
 
     .header .contraste-btn {
@@ -349,6 +536,33 @@ body.high-contrast .content .star {
 
     .content .review_details .review_title_rating {
         justify-content: left;
+    }
+
+    .content .follow {
+        justify-content: left;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+
+    .content .follow .following, .content .follow .followedby{
+        width: 600px;
+        margin-left: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+    .content .follow a {
+        margin-left: 40px;
+    }
+
+    .content .follow_submit_p {
+        text-align: right;
+        margin-right: 35px;
+    }
+
+    .content .modify_buttons {
+        justify-content: right;
+        margin-right: 6px;
     }
 
     /* WCAG */

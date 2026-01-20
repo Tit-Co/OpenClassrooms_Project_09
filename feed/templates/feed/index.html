@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load feed_extras %}
 {% block content %}
 
 <br>
@@ -12,10 +13,10 @@
 
 <section class="content">
     {% for post in feed_posts %}
-        {% if post.is_ticket %}
-            {% include 'feed/ticket_details.html' with ticket=post %}
-        {% elif post.is_review %}
-            {% include 'feed/review_details.html' with review=post %}
+        {% if post.content_type == 'Ticket'  %}
+            {% include 'feed/partials/ticket_snippet.html' with ticket=post target='feed' review_flag=post.review_flag has_time=True %}
+        {% elif post.content_type == 'Review' %}
+            {% include 'feed/partials/review_snippet.html' with review=post target='feed' %}
         {% endif %}
     {% endfor %}
 </section>

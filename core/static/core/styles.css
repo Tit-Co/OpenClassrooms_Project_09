@@ -87,12 +87,18 @@ body.high-contrast {
     justify-content: center;
 }
 
-.messages .error {
+.messages .errorlist {
+    list-style: none;
+}
+
+.messages .error, .messages .errorlist li {
     color: darkred;
+    font-weight: bold;
 }
 
 .messages .success {
     color: darkgreen;
+    font-weight: bold;
 }
 
 .content form input[type="text"],
