@@ -7,6 +7,14 @@ class TicketAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'description', 'image_preview', 'user', 'time_created')
 
     def image_preview(self, obj):
+        """
+        Method to preview the image of the ticket in the admin page.
+        Args:
+            obj (Any): The object to preview.
+
+        Returns:
+            The HTML preview of the ticket in str format.
+        """
         if obj.image:
             return format_html(
                 '<img src="{}" style="max-height: 50px;" />',

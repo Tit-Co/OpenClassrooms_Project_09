@@ -45,18 +45,23 @@ class FollowUsersForm(forms.Form):
         super().__init__(*args, **kwargs)
 
     def clean_username(self):
+        """
+        Method to validate username.
+        Returns:
+            The username.
+        """
         username = self.cleaned_data["username"]
 
         try:
             followed_user = User.objects.get(username=username)
         except User.DoesNotExist:
-            raise ValidationError("Cet utilisateur n'existe pas.")
+            raise ValidationError(message="❌ Cet utilisateur n'existe pas.")
 
         if followed_user == self.user:
-            raise ValidationError("Vous ne pouvez pas vous suivre vous-même.")
+            raise ValidationError(message="❌ Vous ne pouvez pas vous suivre vous-même.")
 
         if UserFollows.objects.filter(user=self.user, followed_user=followed_user).exists():
-            raise ValidationError("Vous suivez déjà cet utilisateur.")
+            raise ValidationError(message="❌ Vous suivez déjà cet utilisateur.")
 
         self.followed_user = followed_user
 

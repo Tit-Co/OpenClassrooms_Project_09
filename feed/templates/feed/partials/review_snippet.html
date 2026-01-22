@@ -5,7 +5,7 @@
     <h5>{{ review.time_created }}</h5>
 
     <div class="review_title_rating">
-        <p class="ticket_title">{{ review.headline }}</p><p>-</p>
+        <p class="review_title">{{ review.headline }}</p><p>-</p>
         {% if review.rating == 0 %}
             <p class="star">✰ ✰ ✰ ✰ ✰</p>
         {% endif %}
@@ -26,11 +26,26 @@
         {% endif %}
     </div>
 
-    <p class="description">{{ review.body }}</p><hr>
+    <p class="description">{{ review.body }}</p>
+
+    <div class="feed-separator"></div>
+
     {% if target == 'feed' %}
-        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='feed' has_time=False %}
+        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='feed' has_time=False change=change header=header %}
 
     {% elif target == 'post' %}
-        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='post' has_time=False %}
+        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='post' has_time=False change=change header=header %}
+        <div class="modify_buttons">
+            {% if perms.feed.change_review %}
+                <a class="update_button"
+                   title="Bouton Modifier"
+                   href="{% url 'feed:update-review' review_id=review.id %}">Modifier</a>
+            {% endif %}
+            {% if perms.feed.delete_review %}
+                <a class="delete_button"
+                   title="Bouton Supprimer"
+                   href="{% url 'feed:delete-review' review_id=review.id %}">Supprimer</a>
+            {% endif %}
+        </div>
     {% endif %}
 </div>

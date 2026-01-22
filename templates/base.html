@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,11 +29,37 @@
         </footer>
     <script>
         const btn = document.getElementById('contrast-btn');
+        const STORAGE_KEY = 'high_contrast_enabled';
+
+        if (localStorage.getItem(STORAGE_KEY) === 'true') {
+            document.body.classList.add('high-contrast');
+        }
+
         if (btn) {
             btn.addEventListener('click', function (event) {
-            event.preventDefault();
-            document.body.classList.toggle('high-contrast');
+                event.preventDefault();
+
+                document.body.classList.toggle('high-contrast');
+
+                const isEnabled = document.body.classList.contains('high-contrast');
+                localStorage.setItem(STORAGE_KEY, isEnabled);
             });
+        }
+    </script>
+    <script>
+        const path = window.location.pathname;
+
+        const menuMap = {
+            '/feed/followings/': 'nav_subscribers',
+            '/feed/posts/': 'nav_posts',
+            '/feed/': 'nav_feed',
+        };
+
+        for (const prefix in menuMap) {
+            if (path.startsWith(prefix)) {
+                document.getElementById(menuMap[prefix])?.classList.add('menu_selected');
+                break;
+            }
         }
     </script>
     </body>

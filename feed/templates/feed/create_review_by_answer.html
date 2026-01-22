@@ -8,7 +8,7 @@
             {% csrf_token %}
             <div class="review_article">
                 <h3>Vous êtes en train de poster en réponse à</h3>
-                {% include 'feed/partials/ticket_snippet.html' with target='review' has_time=True %}
+                {% include 'feed/partials/ticket_snippet.html' with target='review' has_time=True header=False %}
             </div>
 
             <div class="review_comment">
@@ -26,7 +26,7 @@
                     {{ review_form.body }}
                 </p>
                 <p class="submit_p">
-                    <input class="ticket_submit_button" title="Bouton Créer un ticket" type="submit" value="Envoyer">
+                    <input class="review_submit_button" title="Bouton Créer un ticket" type="submit" value="Envoyer">
                 </p>
             </div>
         </form>

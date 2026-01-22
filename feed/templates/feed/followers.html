@@ -11,7 +11,7 @@
 {% endif %}
 
 <section class="content">
-    <div class="create_ticket_block">
+    <div class="follow_block">
         <h2>Abonnements</h2>
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -21,7 +21,7 @@
             </p>
 
             <p class="follow_submit_p">
-                <input class="ticket_submit_button" title="Suivre un utilisateur" type="submit" value="Envoyer">
+                <input class="follow_submit_button" title="Bouton Suivre un utilisateur" type="submit" value="Envoyer">
             </p>
             <br>
             <hr class="follow_hr">
@@ -32,7 +32,8 @@
             <div class="follow">
                 {% for follow in following %}
                     <p class="following">{{ follow.followed_user.username }}</p>
-                    <a href="">Se désabonner</a>
+                    <a title="Bouton Se désabonner de {{follow.followed_user.username}}"
+                       href="{% url 'feed:delete-follow' user_id=follow.followed_user.id %}">Se désabonner</a>
                     <br>
                 {% endfor %}
             </div>

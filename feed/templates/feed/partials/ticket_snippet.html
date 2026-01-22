@@ -1,9 +1,13 @@
 {% load feed_extras %}
 <div class="ticket_details">
-    {% if target == 'post' %}
-        <h4>{% get_poster_display ticket.user %} publié un ticket</h4>
-    {% elif target == 'feed' or target == 'review' %}
-        <h4>{% get_poster_display ticket.user %} demandé une critique</h4>
+    {% if header %}
+        <h4>Ticket - {% get_poster_display_subject ticket.user %}</h4>
+    {% else %}
+        {% if target == 'post' %}
+            <h4>{% get_poster_display ticket.user %} publié un ticket</h4>
+        {% elif target == 'feed' or target == 'review' %}
+            <h4>{% get_poster_display ticket.user %} demandé une critique</h4>
+        {% endif %}
     {% endif %}
 
     {% if has_time %}
@@ -20,7 +24,7 @@
         {% endif %}
     </div>
 
-    {% if target == 'post' %}
+    {% if target == 'post' and not change %}
         <div class="modify_buttons">
             {% if perms.feed.change_ticket %}
                 <a class="update_button" title="Bouton Modifier" href="{% url 'feed:update-ticket' ticket_id=ticket.id %}">Modifier</a>
@@ -29,7 +33,7 @@
                 <a class="delete_button" title="Bouton Supprimer" href="{% url 'feed:delete-ticket' ticket_id=ticket.id %}">Supprimer</a>
             {% endif %}
         </div>
-    {% elif target == 'feed' %}
+    {% elif target == 'feed' and not change %}
         {% if not ticket.user_has_reviewed %}
             <a class="add_review_button"
                title="Bouton Créer une critique"

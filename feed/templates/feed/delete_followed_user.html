@@ -2,15 +2,17 @@
 {% block content %}
 
 <section class="content">
-    <div class="delete_ticket_block">
-        <h2>Supprimer un ticket</h2>
+    <div class="follow_block">
+        <h2>Supprimer un utilisateur suivi</h2>
          <form action="" method="post" enctype="multipart/form-data">
          {% csrf_token %}
 
-                <h3>Etes-vous sur de vouloir supprimer ce ticket ?</h3>
-                {% include 'feed/partials/ticket_snippet.html' with target='review' has_time=True %}
+                <h3>Etes-vous sur de vouloir supprimer cet utilisateur ?</h3>
+                <br>
 
-                <p class="submit_p">
+                <p class="following">{{username}}</p>
+
+                <p class="follow_submit_delete">
                     <input class="ticket_submit_button" title="Supprimer" type="submit" value="Supprimer">
                 </p>
         </form>

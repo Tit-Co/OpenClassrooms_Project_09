@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
 from django.db import models
@@ -13,7 +14,15 @@ class Ticket(models.Model):
     def __str__(self):
         return self.title
 
-    def has_user_review(self, user):
+    def has_user_review(self, user: AbstractUser) -> bool:
+        """
+        Method to determine if a user has a review for this ticket.
+        Args:
+            user (User): The user to check.
+
+        Returns:
+            A boolean indicating if the user has a review for this ticket.
+        """
         return self.review_set.filter(user=user).exists()
 
 

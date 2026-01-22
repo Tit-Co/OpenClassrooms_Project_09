@@ -12,21 +12,16 @@
 {% endif %}
 
 <section class="content">
-    <div class="feedpage_details">
-         <h2>Votre flux</h2>
-        <div class="feed_buttons">
-            <a class="add_ticket_button" href="./tickets/add/" title="Bouton Demander une critique">Demander une critique</a>
-            <a class="add_review_button" href="./reviews/add/" title="Bouton Créer une critique">Créer une critique</a>
-        </div>
+    <div class="postspage_details">
+        <h2>Vos posts</h2>
         {% for post in page_obj %}
             {% if post.content_type == 'Ticket'  %}
-                {% include 'feed/partials/ticket_snippet.html' with ticket=post target='feed' review_flag=post.review_flag has_time=True header=False %}
+                {% include 'feed/partials/ticket_snippet.html' with ticket=post target='post' review_flag=post.review_flag has_time=True header=False %}
             {% elif post.content_type == 'Review' %}
-                {% include 'feed/partials/review_snippet.html' with review=post target='feed' header=True %}
+                {% include 'feed/partials/review_snippet.html' with review=post target='post' header=True %}
             {% endif %}
         {% endfor %}
         <span class="pagination">
-
             {% if page_obj.has_previous %}
                 <a title="Bouton Première page" href="?page=1">Première</a>
                 <a title="Bouton Page précédente" href="?page={{ page_obj.previous_page_number }}">Précédente</a>
@@ -39,6 +34,7 @@
                 <a title="Bouton Dernière page" href="?page={{ page_obj.paginator.num_pages }}">Dernière</a>
             {% endif %}
         </span>
+
     </div>
 </section>
 

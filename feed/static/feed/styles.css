@@ -2,6 +2,14 @@
     margin: 65px 6px;
 }
 
+.menu_selected {
+    background: #0065a0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+
 nav a{
     display: inline-block;
     color: white;
@@ -24,10 +32,9 @@ nav a:visited{
 }
 
 .content .review_article, .content .review_comment {
-
     border: 1px solid #0898ec;
     border-radius: 8px;
-    box-shadow: 0 0 0 1px rgba(8, 152, 236, 0.2);
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
     margin: 2px;
 }
 
@@ -43,7 +50,7 @@ nav a:visited{
     width: 300px;
 }
 
-.custom-file-btn, .ticket_submit_button {
+.create_review_block .custom-file-btn, .review_submit_button {
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
@@ -59,7 +66,7 @@ nav a:visited{
     text-align: center;
 }
 
-.custom-file-btn:hover, .ticket_submit_button:hover {
+.create_review_block .custom-file-btn:hover, .review_submit_button:hover {
     background-color: #067fc4;
     transform: translateY(-1px);
     font-weight: bold;
@@ -67,14 +74,126 @@ nav a:visited{
     cursor: pointer;
 }
 
+.review_submit_button {
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.review_submit_button:hover {
+    box-shadow: 0 8px 20px rgba(8, 152, 236, 0.4);
+}
+
+.create_ticket_block .custom-file-btn, .ticket_submit_button {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #F28C38;
+    font-size: 16px;
+    background-color: #F28C38;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.create_ticket_block .custom-file-btn:hover, .ticket_submit_button:hover {
+    background-color: darkorange;
+    transform: translateY(-1px);
+    font-weight: bold;
+    border: 1px solid #292b33;
+    cursor: pointer;
+}
+
+.ticket_submit_button {
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.ticket_submit_button:hover {
+    box-shadow: 0 8px 20px rgba(242, 140, 56, 0.4);
+}
+
+.follow_submit_button {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+    background-color: black;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.follow_submit_button:hover {
+    transform: translateY(-1px);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.follow_submit_button {
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.follow_submit_button:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.content h2 {
+    background: white;
+    margin-top: 0;
+    padding: 20px 10px;
+    width: fit-content;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content .create_ticket_block h2, .content .delete_ticket_block h2 {
+    background-color: #F28C38;
+    color: white;
+
+}
+
+.content .delete_ticket_block h3 {
+    color: #F28C38;
+}
+
+.content .create_ticket_block p, .content .create_review_block p {
+    color: black;
+}
+
+.content .create_review_block h2 {
+    background-color: #0898ec;
+    color: white;
+}
+
 .content h3 {
     text-align: center;
 }
 
-.content hr {
-    color: rgba(8, 152, 236, 0.5);
-    width: 40%;
-    margin-bottom: 20px;
+.feed-separator {
+    margin: 30px 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ccc, transparent);
 }
 
 .content form .file-input {
@@ -115,6 +234,22 @@ nav a:visited{
     box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
 }
 
+.content .create_ticket_block form input[type="text"] {
+    border: 1px solid #F28C38;
+}
+
+.content .create_ticket_block form input[type="text"]:focus {
+    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.2);
+}
+
+.content .create_ticket_block form textarea {
+    border: 1px solid #F28C38;
+}
+
+.content .create_ticket_block form textarea:focus {
+    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.2);
+}
+
 .content form span {
     font-size: 12px;
 }
@@ -144,6 +279,10 @@ nav a:visited{
     font-size: 16px;
 }
 
+.content .ticket_details:hover, .content .review_details:hover  {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
 .content .ticket_details .ticket_title, .content .review_details .ticket_title{
     font-weight: bold;
 }
@@ -164,6 +303,32 @@ nav a:visited{
     font-weight: normal;
 }
 
+.content .ticket_details .ticket_title {
+    border: 1px solid #F28C38;
+    border-right: 6px solid #F28C38;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background: white;
+    margin-left: -11px;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+}
+
+.content .review_details .review_title {
+    border: 1px solid #0898ec;
+    border-right: 6px solid #0898ec;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background: white;
+    margin-left: -6px;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+}
+
 .content .review_details {
     margin: 0 10px;
     border: 1px solid #0898ec;
@@ -179,8 +344,9 @@ nav a:visited{
 .content .review_details .review_title_rating {
     display: flex;
     gap: 10px;
-    font-size: 18px;
-    justify-content: center;
+    font-size: 16px;
+    justify-content: left;
+    font-weight: bold;
 }
 
 .content .description {
@@ -200,6 +366,7 @@ nav a:visited{
 
 .content .star:hover {
     box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .content .follow {
@@ -284,17 +451,27 @@ nav a:visited{
     width: 100%;
 }
 
-.content .follow_submit_p input[type="submit"]{
+.content .follow_submit_p input[type="submit"] {
     background-color: black;
     border: 1px solid black;
 }
 
-.content .ticket_details .add_review_button {
+.content .follow_submit_delete {
+    display: flex;
+    justify-content: center;
+}
+
+.content .follow_submit_delete input[type="submit"] {
+    background-color: #0898ec;
+    border: 1px solid #0898ec;
+}
+
+.content .add_ticket_button, .content .add_review_button {
     display: inline-block;
     text-decoration: none;
     border-radius: 8px;
     padding: 8px 25px;
-    width: 190px;
+    width: 230px;
     height: 40px;
     font-size: 16px;
     color: white;
@@ -305,7 +482,17 @@ nav a:visited{
     background-color: #F28C38;
 }
 
-.content .ticket_details .add_review_button:hover {
+.content .add_ticket_button {
+    border: 1px solid #F28C38;
+    background-color: #F28C38;
+}
+
+.content .add_review_button {
+    border: 1px solid #0898ec;
+    background-color: #0898ec;
+}
+
+.content .add_review_button:hover, .content .add_ticket_button:hover {
     transform: translateY(-1px);
     font-weight: bold;
     align-items: center;
@@ -334,14 +521,14 @@ nav a:visited{
     margin-bottom: 15px;
 }
 
-.content .ticket_details .modify_buttons .update_button, .content .ticket_details .modify_buttons .delete_button {
-    border: 1px solid #F28C38;
-    background-color: #F28C38;
-}
-
 .content .review_details .modify_buttons .update_button, .content .review_details .modify_buttons .delete_button {
     border: 1px solid #0898ec;
     background-color: #0898ec;
+}
+
+.content .ticket_details .modify_buttons .update_button, .content .ticket_details .modify_buttons .delete_button {
+    border: 1px solid #F28C38;
+    background-color: #F28C38;
 }
 
 .content .ticket_details .modify_buttons .update_button:hover,
@@ -352,6 +539,59 @@ nav a:visited{
     font-weight: bold;
 }
 
+.content .feed_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.content .postspage_details, .content .feedpage_details, .content .follow_block  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content .pagination {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    color: black;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.content .pagination hr {
+    color: black;
+}
+
+.content .pagination a {
+    display: inline-block;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 16px;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+}
+
+.content .pagination a:hover {
+    background-color: rgba(8, 152, 236, 0.1);
+}
+
+.content .pagination a:visited {
+    color: black;
+}
 
 /* WCAG */
 body.high-contrast nav a, body.high-contrast .header nav a:visited {
@@ -363,33 +603,52 @@ body.high-contrast nav a:hover {
     text-decoration: underline;
 }
 
+body.high-contrast .menu_selected {
+    background-color: lightgray;
+}
+
 body.high-contrast .content .review_article, body.high-contrast .content .review_comment {
     border: 1px solid black;
 }
 
-body.high-contrast h3 {
+body.high-contrast .delete_ticket_block h2 {
+    background-color: white;
     color: black;
 }
 
-body.high-contrast textarea {
+body.high-contrast h3, body.high-contrast .delete_ticket_block h3 {
+    color: black;
+}
+
+body.high-contrast .content textarea {
     border: 1px solid black;
 }
 
-body.high-contrast textarea:focus {
+body.high-contrast .content textarea:focus {
     outline: none;
-    border: 1px solid #292b33;
-    box-shadow: 0 0 0 3px rgba(41, 43, 51, 0.2);
+    border: 1px solid black;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
 
 }
 
-body.high-contrast .custom-file-btn {
+body.high-contrast .content .create_ticket_block p {
+    color: black;
+}
+
+body.high-contrast .content .create_ticket_block .custom-file-btn,
+body.high-contrast .content .create_review_block .custom-file-btn  {
     background-color: black;
     border: 1px solid black;
     color: white;
     font-size: 16px;
 }
 
-body.high-contrast label {
+body.high-contrast .content .create_review_block .review_article,
+body.high-contrast .content .create_review_block .review_comment {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+body.high-contrast .content label {
     color: black;
     font-size: 18px;
 }
@@ -402,20 +661,52 @@ body.high-contrast .content .star {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-body.high-contrast .content .ticket_details .add_review_button {
+body.high-contrast .content .add_review_button,
+body.high-contrast .content .add_ticket_button,
+body.high-contrast .content .review_details .modify_buttons .update_button,
+body.high-contrast .content .review_details .modify_buttons .delete_button,
+body.high-contrast .content .ticket_details .modify_buttons .update_button,
+body.high-contrast .content .ticket_details .modify_buttons .delete_button
+{
     font-size: 16px;
     font-weight: bold;
-    color: #F28C38;
-    border: 1px solid #F28C38;
     background-color: white;
-    width: 230px;
+    width: 250px;
     height: 40px;
 }
 
-body.high-contrast .content .ticket_details .add_review_button:hover {
+body.high-contrast .content .add_review_button,
+body.high-contrast .content .review_details .modify_buttons .update_button,
+body.high-contrast .content .review_details .modify_buttons .delete_button  {
+    color: #0898ec;
+    border: 1px solid #0898ec;
+}
+
+body.high-contrast .content .add_ticket_button,
+body.high-contrast .content .ticket_details .modify_buttons .update_button,
+body.high-contrast .content .ticket_details .modify_buttons .delete_button  {
+    color: #F28C38;
+    border: 1px solid #F28C38;
+}
+
+body.high-contrast .content .add_review_button:hover,
+body.high-contrast .content .add_ticket_button:hover,
+body.high-contrast .content .review_details .modify_buttons .update_button:hover,
+body.high-contrast .content .review_details .modify_buttons .delete_button:hover,
+body.high-contrast .content .ticket_details .modify_buttons .update_button:hover,
+body.high-contrast .content .ticket_details .modify_buttons .delete_button:hover
+{
     font-size: 18px;
 }
 
+body.high-contrast .content .pagination {
+    font-size: 16px;
+}
+
+body.high-contrast .content .pagination a:hover {
+    background-color: white;
+    text-decoration: underline;
+}
 
 /* Tablet */
 @media (min-width: 415px) and (max-width: 810px) {
@@ -457,6 +748,25 @@ body.high-contrast .content .ticket_details .add_review_button:hover {
     .content .ticket_image img{
         max-width: 500px;
     }
+
+    .content .feed_buttons {
+        flex-direction: row;
+        margin-top: 30px;
+        margin-bottom: 0;
+        width: 100%;
+        gap: 150px;
+    }
+
+    .content .pagination {
+        flex-direction: row;
+        margin: 10px 0;
+    }
+
+    .menu_selected {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+    }
 }
 
 /* Desktop */
@@ -471,7 +781,6 @@ body.high-contrast .content .ticket_details .add_review_button:hover {
     .header .contraste-btn {
         margin: 45px 6px;
     }
-
 
     .content h3 {
         text-align: left;
@@ -565,8 +874,27 @@ body.high-contrast .content .ticket_details .add_review_button:hover {
         margin-right: 6px;
     }
 
+    .content .feed_buttons {
+        gap: 150px;
+        width: 100%;
+        flex-direction: row;
+        margin-bottom: 0;
+    }
+
+    .content .pagination {
+        flex-direction: row;
+        margin: 10px 0;
+    }
+
+    .menu_selected {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+    }
+
     /* WCAG */
     body.high-contrast nav a, body.high-contrast .header nav a:visited {
         font-size: 14px;
     }
+
 }
