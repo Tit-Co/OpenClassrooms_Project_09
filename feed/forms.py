@@ -21,6 +21,7 @@ class TicketForm(forms.ModelForm):
             }),
         }
 
+
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
@@ -31,14 +32,17 @@ class ReviewForm(forms.ModelForm):
             "rating": forms.RadioSelect(choices=[(i, i) for i in range(6)], attrs={"class": "form-radio"}),
         }
 
+
 class FollowUsersForm(forms.Form):
-    username = forms.CharField(max_length=20, label="",
-        widget=forms.TextInput(attrs={
-            "placeholder": "Nom d'utilisateur",
-            "class": "form-input",
-        }),
-        required=True,
-    )
+    username = forms.CharField(max_length=20,
+                               label="",
+                               widget=forms.TextInput(attrs={
+                                   "placeholder": "Nom d'utilisateur",
+                                   "class": "form-input",
+                                   "id": "form-input",
+                                   "onkeyup": "processChange()",
+                               }),
+                               required=True,)
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")

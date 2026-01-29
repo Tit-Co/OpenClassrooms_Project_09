@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 from django.db import models
 from django.db.models import QuerySet
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 
 from django.shortcuts import render, redirect
 
@@ -56,6 +56,7 @@ def feed_index(request: HttpRequest) -> HttpResponse:
 
     return render(request=request, template_name='feed/index.html', context=context)
 
+
 @login_required
 def posts(request: HttpRequest) -> HttpResponse:
     """
@@ -87,6 +88,7 @@ def posts(request: HttpRequest) -> HttpResponse:
     context = {'page_obj': page_obj}
 
     return render(request=request, template_name='feed/posts.html', context=context)
+
 
 @login_required
 def create_ticket(request: HttpRequest) -> HttpResponse:
@@ -126,6 +128,7 @@ def create_ticket(request: HttpRequest) -> HttpResponse:
 
     return render(request=request, template_name='feed/create_ticket.html', context={'ticket_form': ticket_form})
 
+
 @login_required
 @permission_required(perm='feed.change_ticket', raise_exception=True)
 def update_ticket(request: HttpRequest, ticket_id: int) -> HttpResponse:
@@ -148,13 +151,14 @@ def update_ticket(request: HttpRequest, ticket_id: int) -> HttpResponse:
             messages.success(request=request, message="✅ Ticket correctement mis à jour.")
         else:
             messages.error(request=request, message="❌ La mise à jour du ticket a échoué. Veuillez réessayer.")
-        return redirect(to='feed:feed')
+        return redirect(to='feed:posts')
     else:
         ticket_form = TicketForm(instance=ticket)
 
     return render(request=request,
                   template_name='feed/update_ticket.html',
                   context={'ticket_form': ticket_form, "ticket": ticket})
+
 
 @permission_required(perm='feed.delete_ticket', raise_exception=True)
 @login_required
@@ -173,9 +177,10 @@ def delete_ticket(request: HttpRequest, ticket_id: int) -> HttpResponse:
     if request.method == 'POST':
         ticket.delete()
         messages.success(request=request, message="✅ Ticket correctement supprimé.")
-        return redirect(to='feed:feed')
+        return redirect(to='feed:posts')
 
     return render(request=request, template_name='feed/delete_ticket.html', context={'ticket': ticket})
+
 
 @login_required
 def create_review(request: HttpRequest) -> HttpResponse:
@@ -212,7 +217,7 @@ def create_review(request: HttpRequest) -> HttpResponse:
                 user=user,
             )
             messages.success(request=request, message="✅ Critique correctement publiée.")
-            return redirect(tp='feed:feed')
+            return redirect(to='feed:feed')
         else:
             messages.error(request=request, message="❌ La publication de la critique a échoué. Veuillez réessayer.")
     else:
@@ -222,6 +227,7 @@ def create_review(request: HttpRequest) -> HttpResponse:
     return render(request=request,
                   template_name='feed/create_review.html',
                   context={'ticket_form': ticket_form, 'review_form': review_form})
+
 
 @login_required
 def create_review_by_answer(request: HttpRequest, ticket_id: int) -> HttpResponse:
@@ -263,6 +269,7 @@ def create_review_by_answer(request: HttpRequest, ticket_id: int) -> HttpRespons
                   template_name='feed/create_review_by_answer.html',
                   context={'ticket': ticket, 'review_form': review_form})
 
+
 @login_required
 @permission_required(perm='feed.change_review', raise_exception=True)
 def update_review(request, review_id):
@@ -284,7 +291,7 @@ def update_review(request, review_id):
         if review_form.is_valid():
             review_form.save()
             messages.success(request, "✅ Critique correctement mise à jour.")
-            return redirect('feed:feed')
+            return redirect('feed:posts')
         else:
             messages.error(request, "❌ La mise à jour de la critique a échoué. Veuillez réessayer.")
     else:
@@ -293,6 +300,7 @@ def update_review(request, review_id):
     return render(request=request,
                   template_name='feed/update_review.html',
                   context={'review_form': review_form, "ticket": ticket, "review": review})
+
 
 @login_required
 @permission_required(perm='feed.delete_review', raise_exception=True)
@@ -312,11 +320,12 @@ def delete_review(request: HttpRequest, review_id: int) -> HttpResponse:
     if request.method == 'POST':
         review.delete()
         messages.success(request=request, message="✅ Critique correctement supprimée.")
-        return redirect(to='feed:feed')
+        return redirect(to='feed:posts')
 
     return render(request=request,
                   template_name='feed/delete_review.html',
                   context={'review': review, 'ticket': ticket})
+
 
 @login_required
 def follow_user(request: HttpRequest) -> HttpResponse:
@@ -348,7 +357,8 @@ def follow_user(request: HttpRequest) -> HttpResponse:
 
     return render(request=request,
                   template_name="feed/followers.html",
-                  context={"follow_form": follow_form, "following": following, "followed_by": followed_by,})
+                  context={"follow_form": follow_form, "following": following, "followed_by": followed_by})
+
 
 def delete_follow_user(request: HttpRequest, user_id: int) -> HttpResponse:
     """
@@ -390,7 +400,6 @@ def get_users_viewable_tickets(user: AbstractUser) -> QuerySet[Ticket]:
     return Ticket.objects.filter(user__in=followed_users)
 
 
-
 def get_users_viewable_reviews(user: AbstractUser) -> QuerySet[Review]:
     """
     Method for getting user viewable reviews.
@@ -405,3 +414,10 @@ def get_users_viewable_reviews(user: AbstractUser) -> QuerySet[Review]:
     )
 
     return Review.objects.filter(user__in=followed_users)
+
+
+def follow_compute_user(request: HttpRequest) -> JsonResponse:
+    if request.method == "POST":
+        user_to_follow = User.objects.filter(username=request.POST.get('user'))
+        return JsonResponse({'response': user_to_follow.exists()})
+    return JsonResponse({'response': False})

@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'base_feed.html' %}
 {% block content %}
 
-<section class="content">
+<section class="content" aria-roledescription="region">
     <div class="delete_ticket_block">
         <h2>Supprimer un ticket</h2>
          <form action="" method="post" enctype="multipart/form-data">
@@ -10,9 +10,14 @@
                 <h3>Etes-vous sur de vouloir supprimer ce ticket ?</h3>
                 {% include 'feed/partials/ticket_snippet.html' with target='review' has_time=True %}
 
-                <p class="submit_p">
-                    <input class="ticket_submit_button" title="Supprimer" type="submit" value="Supprimer">
-                </p>
+                <div class="actions_buttons">
+                    <a class="button button--ticket"
+                       title="Bouton Retourner"
+                       href="{% url 'feed:posts' %}">Retourner</a>
+                    <p class="submit_p">
+                        <input class="button button--ticket" title="Supprimer" type="submit" value="Supprimer">
+                    </p>
+                </div>
         </form>
     </div>
 </section>

@@ -9,13 +9,15 @@ body {
     background: lightgray;
     color: #0898ec;
     font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 16px;
 }
 
 body.high-contrast {
     background: white;
+
 }
 
-.header{
+header{
     border: 1px solid #292b33;
     border-radius: 8px;
     width: 100%;
@@ -23,16 +25,18 @@ body.high-contrast {
 
 }
 
-.header div {
+header div {
     display: inline-block;
     position: absolute;
 }
 
-.header .eye_logo {
+header .eye_logo {
     height: 25px;
 }
 
-.header p {
+h1 {
+    display: block;
+    min-height: 26px;
     font-size: 16px;
     text-align: center;
     font-weight: bold;
@@ -40,24 +44,24 @@ body.high-contrast {
     margin-top: 5px;
 }
 
-.header .contraste-btn {
+header .contraste-btn {
     position: absolute;
-    margin: 44px 6px;
+    margin: 43px 6px;
     color: black;
     background: white;
     border-radius: 0 0 8px 8px;
     padding: 5px;
     font-size: 16px;
-    width: 140px;
-    box-shadow: 0 0 0 2px rgba(41, 43, 51, 0.2);
-    border: 1px solid #0898ec;
+    width: 150px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    border: 2px solid #0898ec;
 }
 
-.header .contraste-btn div:hover {
+header .contraste-btn div:hover {
     text-decoration: underline;
 }
 
-.header nav {
+header nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,7 +82,7 @@ body.high-contrast {
     border-radius: 8px;
     text-align: center;
     /*background-color: rgba(8, 152, 236, 1%);*/
-    background-color: rgba(255, 255, 255, 20%);
+    background-color: rgba(255, 255, 255, 30%);
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
@@ -113,6 +117,10 @@ body.high-contrast {
     border-radius: 16px;
 }
 
+.content form li {
+    color: darkred;
+}
+
 .content input:focus {
     outline: none;
     border: 2px solid #0898ec;
@@ -123,7 +131,7 @@ body.high-contrast {
     position: relative;
 }
 
-.subscription_button, .connection_button {
+.button {
     text-decoration: none;
     border-radius: 8px;
     border: 1px solid #0898ec;
@@ -133,18 +141,18 @@ body.high-contrast {
     height: 40px;
     cursor: pointer;
     color: white;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.subscribe_button, .cancel_button {
-    text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid #0898ec;
+.button--subscription, .button--connection {
+
+}
+
+.button--subscribe, .button--cancel {
     padding: 8px 25px;
-    background-color: #0898ec;
-    width: 150px;
-    height: 40px;
-    font-size: 16px;
-    color: white;
 }
 
 .form-actions {
@@ -153,21 +161,22 @@ body.high-contrast {
     gap: 50px;
 }
 
-.cancel_button,
-.subscription_button {
+.button--cancel,
+.button--subscription {
     position: static;
 }
 
-.subscribe_button:visited, .cancel_button:visited {
+.button--subscribe:visited, .button--cancel:visited {
     color: white;
 }
 
-.subscribe_button:hover, .cancel_button:hover, .subscription_button:hover, .connection_button:hover {
+.button:hover {
     background-color: #067fc4;
     transform: translateY(-1px);
     font-weight: bold;
     border: 1px solid #292b33;
     cursor: pointer;
+    box-shadow: 0 8px 20px rgba(8, 152, 236, 0.4);
 }
 
 .footer {
@@ -186,33 +195,34 @@ body.high-contrast {
 }
 
 /* wcag */
-body.high-contrast p, body.high-contrast h2 {
+body.high-contrast p, body.high-contrast h1, body.high-contrast h2 {
     color: black;
 }
 
 body.high-contrast .content,
-body.high-contrast .header,
+body.high-contrast header,
 body.high-contrast .footer {
     background: white;
 }
 
-body.high-contrast button, body.high-contrast input[type="submit"] {
+body.high-contrast .button {
     color: white;
     background: black;
     border: 1px solid white;
     font-size: 18px;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-body.high-contrast button:hover, body.high-contrast input[type="submit"]:hover {
-    background: black;
+body.high-contrast .button:hover {
+    text-decoration: underline;
+    border: 1px solid black;
 }
 
 body.high-contrast a:visited {
     color: white;
 }
 
-body.high-contrast .header .contraste-btn {
+body.high-contrast header .contraste-btn {
     display: block;
     position: absolute;
     font-size: 16px;
@@ -243,12 +253,12 @@ body.high-contrast .content input:focus {
         width: 300px;
     }
 
-    .header p {
+    header p {
         margin-top: 10px;
     }
 
-    .header .contraste-btn {
-        margin: 48px 6px;
+    header .contraste-btn {
+        margin: 47px 6px;
     }
 }
 
@@ -261,17 +271,17 @@ body.high-contrast .content input:focus {
         gap: 100px;
     }
 
-    .header p {
+    header h1 {
         margin-top: 10px;
     }
 
-    .header nav {
+    header nav {
         margin-top: -50px;
         justify-content: right;
     }
 
-    .header .contraste-btn {
-        margin: 48px 6px;
+    header .contraste-btn {
+        margin: 47px 6px;
     }
 
     .content form input[type="text"],

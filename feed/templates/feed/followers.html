@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_feed.html' %}
 {% block content %}
 
 <br>
@@ -10,9 +10,9 @@
 </div>
 {% endif %}
 
-<section class="content">
-    <div class="follow_block">
-        <h2>Abonnements</h2>
+<section class="content" aria-roledescription="region">
+    <div class="followpage_details">
+        <h2>ABONNEMENTS<div class="short-feed-separator"></div></h2>
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p class="follow_title">
@@ -20,11 +20,12 @@
                 {{ follow_form.username }}
             </p>
 
-            <p class="follow_submit_p">
-                <input class="follow_submit_button" title="Bouton Suivre un utilisateur" type="submit" value="Envoyer">
+            <p class="follow_submit_p" id="follow_submit_p">
+                <input class="button button--follow"
+                       title="Bouton Suivre un utilisateur" type="submit" value="Envoyer">
             </p>
             <br>
-            <hr class="follow_hr">
+            <div class="feed-separator"></div>
 
             <p class="p_following">
                 <label>Abonnements</label>
@@ -32,8 +33,10 @@
             <div class="follow">
                 {% for follow in following %}
                     <p class="following">{{ follow.followed_user.username }}</p>
+
                     <a title="Bouton Se désabonner de {{follow.followed_user.username}}"
                        href="{% url 'feed:delete-follow' user_id=follow.followed_user.id %}">Se désabonner</a>
+
                     <br>
                 {% endfor %}
             </div>
@@ -48,5 +51,40 @@
         </form>
     </div>
 </section>
+<script>
+    function debounce(func, timeout = 300){
+          let timer;
+          return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+            };
+    }
+    function validateInput(){
+          console.log('Validate user input');
+          document.getElementById("form-input").addEventListener("keyup", event => {
+                event.preventDefault()
+                let userInput = document.getElementById("form-input").value;
+                let formData = new FormData()
 
+                let headers = new Headers();
+                const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                headers.append('X-CSRFToken', csrftoken);
+
+                formData.append('user', userInput)
+                const request = new Request("{% url 'feed:follow-compute-user' %}", {method: 'POST', body: formData, headers: headers});
+
+                fetch(request)
+                    .then(response => response.json())
+                    .then(result => {
+                        let btn = document.getElementById('follow_submit_p');
+                        if (result["response"]) {
+                            btn.style.display = "flex"
+                        } else {
+                            btn.style.display = "none"
+                        }
+                    })
+                })
+    }
+    const processChange = debounce(() => validateInput());
+</script>
 {% endblock %}

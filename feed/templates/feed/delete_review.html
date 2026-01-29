@@ -1,18 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base_feed.html' %}
 {% block content %}
 
-<section class="content">
+<section class="content" aria-roledescription="region">
     <div class="delete_review_block">
         <h2>Supprimer une critique</h2>
          <form action="" method="post" enctype="multipart/form-data">
          {% csrf_token %}
 
                 <h3>Etes-vous sur de vouloir supprimer cette critique ?</h3>
-                {% include 'feed/partials/review_snippet.html' with target='feed' change=True header=false %}
+                {% include 'feed/partials/review_snippet.html' with target='feed' header=false %}
 
-                <p class="submit_p">
-                    <input class="review_submit_button" title="Supprimer" type="submit" value="Supprimer">
-                </p>
+                <div class="actions_buttons">
+                    <a class="button button--review"
+                           title="Bouton Retourner"
+                           href="{% url 'feed:posts' %}">Retourner</a>
+                    <p class="submit_p">
+                        <input class="button button--review" title="Supprimer" type="submit" value="Supprimer">
+                    </p>
+                </div>
         </form>
     </div>
 </section>

@@ -17,7 +17,7 @@ def log_in(request: HttpRequest) -> HttpResponse:
         An HttpResponse to the accounts application homepage and whose content is filled with the login form.
     """
     if request.method == 'POST':
-        login_form  = LoginForm(request=request, data=request.POST)
+        login_form = LoginForm(request=request, data=request.POST)
         if login_form.is_valid():
             user = login_form.get_user()
             login(request, user)
@@ -29,6 +29,7 @@ def log_in(request: HttpRequest) -> HttpResponse:
         login_form = LoginForm()
 
     return render(request=request, template_name='accounts/index.html', context={'login_form': login_form})
+
 
 def sign_up(request: HttpRequest) -> HttpResponse:
     """
@@ -52,6 +53,7 @@ def sign_up(request: HttpRequest) -> HttpResponse:
         signup_form = SignupForm()
 
     return render(request=request, template_name='accounts/sign_up.html', context={'signup_form': signup_form})
+
 
 def log_out(request: HttpRequest) -> HttpResponse:
     """

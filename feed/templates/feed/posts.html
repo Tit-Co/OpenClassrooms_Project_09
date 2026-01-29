@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_feed.html' %}
 {% load feed_extras %}
 {% block content %}
 
@@ -11,29 +11,32 @@
 </div>
 {% endif %}
 
-<section class="content">
+<section class="content" aria-roledescription="region">
     <div class="postspage_details">
-        <h2>Vos posts</h2>
+        <h2>VOS POSTS<div class="short-feed-separator"></div></h2>
         {% for post in page_obj %}
-            {% if post.content_type == 'Ticket'  %}
+            {% if post.content_type == 'Ticket' %}
                 {% include 'feed/partials/ticket_snippet.html' with ticket=post target='post' review_flag=post.review_flag has_time=True header=False %}
             {% elif post.content_type == 'Review' %}
                 {% include 'feed/partials/review_snippet.html' with review=post target='post' header=True %}
             {% endif %}
         {% endfor %}
-        <span class="pagination">
+
+        <div class="feed-separator"></div>
+
+        <div class="pagination">
             {% if page_obj.has_previous %}
-                <a title="Bouton Première page" href="?page=1">Première</a>
-                <a title="Bouton Page précédente" href="?page={{ page_obj.previous_page_number }}">Précédente</a>
+                <a title="Bouton Première page" href="?page=1">❰ ❰</a>
+                <a title="Bouton Page précédente" href="?page={{ page_obj.previous_page_number }}">❰</a>
             {% endif %}
             <span>
                 Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
             </span>
             {% if page_obj.has_next %}
-                <a title="Bouton Page suivante" href="?page={{ page_obj.next_page_number }}">Suivante</a>
-                <a title="Bouton Dernière page" href="?page={{ page_obj.paginator.num_pages }}">Dernière</a>
+                <a title="Bouton Page suivante" href="?page={{ page_obj.next_page_number }}">❱</a>
+                <a title="Bouton Dernière page" href="?page={{ page_obj.paginator.num_pages }}">❱ ❱</a>
             {% endif %}
-        </span>
+        </div>
 
     </div>
 </section>

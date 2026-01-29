@@ -1,5 +1,5 @@
 {% load feed_extras %}
-<div class="ticket_details">
+<div class="post post--ticket">
     {% if header %}
         <h4>Ticket - {% get_poster_display_subject ticket.user %}</h4>
     {% else %}
@@ -11,7 +11,7 @@
     {% endif %}
 
     {% if has_time %}
-        <h5>{{ ticket.time_created }}</h5>
+        <h5>{{ ticket.time_created }} ⯇</h5>
     {% endif %}
 
     <p class="ticket_title">{{ ticket.title }}</p>
@@ -24,18 +24,16 @@
         {% endif %}
     </div>
 
-    {% if target == 'post' and not change %}
+    {% if target == 'post' %}
         <div class="modify_buttons">
-            {% if perms.feed.change_ticket %}
-                <a class="update_button" title="Bouton Modifier" href="{% url 'feed:update-ticket' ticket_id=ticket.id %}">Modifier</a>
-            {% endif %}
-            {% if perms.feed.delete_ticket %}
-                <a class="delete_button" title="Bouton Supprimer" href="{% url 'feed:delete-ticket' ticket_id=ticket.id %}">Supprimer</a>
+            {% if ticket.user == request.user %}
+                <a class="button button--ticket change" title="Bouton Modifier" href="{% url 'feed:update-ticket' ticket_id=ticket.id %}">Modifier</a>
+                <a class="button button--ticket change" title="Bouton Supprimer" href="{% url 'feed:delete-ticket' ticket_id=ticket.id %}">Supprimer</a>
             {% endif %}
         </div>
-    {% elif target == 'feed' and not change %}
+    {% elif target == 'feed' %}
         {% if not ticket.user_has_reviewed %}
-            <a class="add_review_button"
+            <a class="button button--review add_button"
                title="Bouton Créer une critique"
                href="{% url 'feed:create-review-by-answer' ticket_id=ticket.id %}">Créer une critique</a>
         {% endif %}

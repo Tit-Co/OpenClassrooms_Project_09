@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'base_feed.html' %}
+
 {% block content %}
 
-<section class="content">
+<section class="content" aria-roledescription="region">
     <div class="create_review_block">
         <h2>Créer une critique</h2>
         <form action="" method="post" enctype="multipart/form-data">
@@ -20,7 +21,7 @@
                     <label>Image</label>
                 </p>
                 <p>
-                    <label for="image-upload" class="custom-file-btn">Télécharger fichier</label>
+                    <label for="image-upload" class="button button--file">Télécharger fichier</label>
                     <span id="file-name">Aucun fichier sélectionné</span>
                     {{ ticket_form.image }}
                 </p>
@@ -40,11 +41,16 @@
                     <label>Commentaire</label>
                     {{ review_form.body }}
                 </p>
-                <p class="submit_p">
-                    <input class="review_submit_button" title="Créer un ticket" type="submit" value="Envoyer">
-                </p>
+                <div class="actions_buttons">
+                    <a class="button button--review"
+                       title="Bouton Retourner"
+                       href="{% url 'feed:feed' %}">Retourner</a>
+                    <p class="submit_p">
+                        <input class="button button--review" title="Créer une critique" type="submit" value="Envoyer">
+                    </p>
+                </div>
             </div>
-        </form>
+        </form><br>
     </div>
 </section>
 <script>

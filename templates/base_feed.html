@@ -4,27 +4,28 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LitReview</title>
+        <title id="title">LitReview</title>
         <link id="core_css" rel="stylesheet" href="{% static 'core/styles.css' %}">
-        {% if user.is_authenticated %}
-            <link id="feed_css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
-        {% endif %}
+        <link id="feed_css" rel="stylesheet" href="{% static 'feed/styles.css' %}">
     </head>
     <body>
-        <section class="header">
+        <header role="banner">
             <a class="contraste-btn" id="contrast-btn" title="Bouton contraste" href="#">
                 <img class="eye_logo"
                      alt="Image oeil"
-                     title="Image oeil"
-                     src="{% static 'core/images/eye.png' %}"><div>CONTRASTE +</div></a>
-            <p>LITReview</p>
+                     title="Image Contaste +"
+                     src="{% static 'core/images/eye.png' %}"><div>CONTRASTE ✚</div></a>
+            <h1>LITReview</h1>
             {% if user.is_authenticated %}
                 {% include './navbar.html' %}
             {% endif %}
-        </section>
-        {% block content %}{% endblock %}
+        </header>
 
-        <footer class="footer">
+        <main role="main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="footer" role="contentinfo">
             <p>© 2026 - Nicolas MARIE - OpenClassrooms</p>
         </footer>
     <script>
@@ -54,10 +55,16 @@
             '/feed/posts/': 'nav_posts',
             '/feed/': 'nav_feed',
         };
+        const title = {
+            '/feed/followings/': 'LitReview - Abonnements',
+            '/feed/posts/': 'LitReview - Posts',
+            '/feed/': 'LitReview - Flux',
+        };
 
         for (const prefix in menuMap) {
             if (path.startsWith(prefix)) {
                 document.getElementById(menuMap[prefix])?.classList.add('menu_selected');
+                document.getElementById("title").innerText = title[prefix];
                 break;
             }
         }

@@ -9,7 +9,7 @@ This project was completed as part of the "Python Developer" path at OpenClassro
 
 The goal was to develop a web application with Django capable of:
 - Publishing reviews of books or articles.
-- Requesting reviews on a book or a defined article.
+- Requesting reviews, as a ticket, on a book or a defined article.
 - Looking for interesting books to read based on reviews from others users.
 
 The application must:
@@ -26,11 +26,11 @@ The application must:
 
 ### <u>Tickets, comments, feeds and followers</u>
 
-- The app displays tickets, comments, reviews in the feed and allows the user to follow others users
+- The app displays tickets and reviews in the feed and allows the user to follow others users
 
-### <u>Add, update, delete tickets and comments</u>
+### <u>Add, update, delete tickets and reviews</u>
 
-- The app allows the user to create, update and delete tickets and comments in the feed conforming to th CRUD operations
+- The app allows the user to create, update and delete tickets and reviews in the feed conforming to th CRUD operations
 
 ### <u>Subscription page</u>
 
@@ -40,7 +40,8 @@ The application must:
 
 ## PROJECT STRUCTURE
 <p align="center">
-<img src="./structure.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+<img src="./structure_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+<img src="./structure_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 ---
@@ -89,6 +90,9 @@ Or
 ### Launching server
 - Open a terminal
 - Go to project folder : `cd litreview`
+- If needed, make migrations and execute them : 
+  - `python manage.py makemigrations`
+  - `python manage.py migrate`
 - Launch the Django server : `python manage.py runserver`
 
 ### Launching the website
@@ -110,34 +114,38 @@ Or
 
 - Feed page
 <p align="center">
-    <img src="./screenshots/feed_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-</p>
-
-- Version for people with disabilities
-<p align="center">
-    <img src="./screenshots/disabilities_version.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-</p>
-
-- Tickets creation page
-<p align="center">
-    <img src="./screenshots/tickets_creation_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-</p>
-
-- Reviews creation page
-<p align="center">
-    <img src="./screenshots/critics_creation_page_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/critics_creation_page_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/feed_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/feed_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Posts page
 <p align="center">
-    <img src="./screenshots/posts_page_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/posts_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/posts_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+</p>
+
+- Version for people with disabilities
+<p align="center">
+    <img src="./screenshots/disabilities_version_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/disabilities_version_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/disabilities_version_3.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+</p>
+
+- Tickets creation page
+<p align="center">
+    <img src="./screenshots/ticket_creation_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+</p>
+
+- Reviews creation page
+<p align="center">
+    <img src="./screenshots/review_creation_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/review_creation_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Update posts and reviews pages
 <p align="center">
-    <img src="./screenshots/update_pages_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/update_pages_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/update_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="./screenshots/delete_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 

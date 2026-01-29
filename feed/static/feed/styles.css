@@ -1,5 +1,17 @@
-.header .contraste-btn {
-    margin: 65px 6px;
+:root {
+    --color-ticket: #F28C38;
+    --color-review: #0898ec;
+    --color-dark: #292b33;
+
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+
+    --shadow-ticket: 0 0 0 3px rgba(242, 140, 56, 0.3);
+    --shadow-review: 0 0 0 3px rgba(8, 152, 236, 0.2);
+}
+
+header .contraste-btn {
+    margin: 64px 6px;
 }
 
 .menu_selected {
@@ -28,11 +40,11 @@ nav a:visited{
 }
 
 .content {
-    padding: 0 30px 30px 30px;
+    padding: 0 30px 0 30px;
 }
 
 .content .review_article, .content .review_comment {
-    border: 1px solid #0898ec;
+    border: 1px solid var(--color-review);
     border-radius: 8px;
     box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
     margin: 2px;
@@ -50,110 +62,104 @@ nav a:visited{
     width: 300px;
 }
 
-.create_review_block .custom-file-btn, .review_submit_button {
+.actions_buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.button {
+    font-family: "Segoe UI", system-ui, sans-serif;
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
     border-radius: 8px;
-    border: 1px solid #0898ec;
     font-size: 16px;
-    background-color: #0898ec;
     width: 150px;
     height: 40px;
     cursor: pointer;
     color: white;
     padding: 6px 0;
     text-align: center;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.create_review_block .custom-file-btn:hover, .review_submit_button:hover {
+.button:hover {
+    transform: translateY(-1px);
+    font-size: 18px;
+}
+
+.create_review_block .button--file {
+    width: 170px;
+}
+
+.create_review_block .button--file, .button--review {
+    border: 1px solid var(--color-review);
+    background-color: var(--color-review);
+}
+
+.create_review_block .button--file:hover, .button--review:hover {
     background-color: #067fc4;
     transform: translateY(-1px);
     font-weight: bold;
-    border: 1px solid #292b33;
     cursor: pointer;
 }
 
-.review_submit_button {
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.review_submit_button:hover {
+.button--review:hover {
     box-shadow: 0 8px 20px rgba(8, 152, 236, 0.4);
+    border: 1px solid var(--color-review);
 }
 
-.create_ticket_block .custom-file-btn, .ticket_submit_button {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid #F28C38;
-    font-size: 16px;
-    background-color: #F28C38;
-    width: 150px;
-    height: 40px;
-    cursor: pointer;
-    color: white;
-    padding: 6px 0;
-    text-align: center;
+.create_ticket_block .button--file {
+    width: 170px;
 }
 
-.create_ticket_block .custom-file-btn:hover, .ticket_submit_button:hover {
+.create_ticket_block .button--file, .button--ticket {
+    border: 1px solid var(--color-ticket);
+    background-color: var(--color-ticket);
+}
+
+.create_ticket_block .button--file:hover, .button--ticket:hover {
     background-color: darkorange;
     transform: translateY(-1px);
     font-weight: bold;
-    border: 1px solid #292b33;
     cursor: pointer;
+    box-shadow: 0 8px 20px rgba(242, 140, 56, 0.4);
+    border: 1px solid var(--color-ticket);
 }
 
-.ticket_submit_button {
+.follow_submit_p {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.button--follow {
+    background-color: black;
+    border: 1px solid black;
+    margin: 10px 40px 0 40px;
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-.ticket_submit_button:hover {
-    box-shadow: 0 8px 20px rgba(242, 140, 56, 0.4);
-}
-
-.follow_submit_button {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid black;
-    font-size: 16px;
+.button--follow:hover {
     background-color: black;
-    width: 150px;
-    height: 40px;
-    cursor: pointer;
-    color: white;
-    padding: 6px 0;
-    text-align: center;
-}
-
-.follow_submit_button:hover {
     transform: translateY(-1px);
     font-weight: bold;
     cursor: pointer;
-}
-
-.follow_submit_button {
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.follow_submit_button:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .content h2 {
+    font-family: "Futura";
     background: white;
     margin-top: 0;
     padding: 20px 10px;
@@ -167,14 +173,25 @@ nav a:visited{
     flex-direction: column;
 }
 
+.content h3 {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
 .content .create_ticket_block h2, .content .delete_ticket_block h2 {
-    background-color: #F28C38;
+    background-color: var(--color-ticket);
     color: white;
 
 }
 
 .content .delete_ticket_block h3 {
-    color: #F28C38;
+    color: var(--color-ticket);
 }
 
 .content .create_ticket_block p, .content .create_review_block p {
@@ -182,18 +199,24 @@ nav a:visited{
 }
 
 .content .create_review_block h2 {
-    background-color: #0898ec;
+    background-color: var(--color-review);
     color: white;
-}
-
-.content h3 {
-    text-align: center;
 }
 
 .feed-separator {
     margin: 30px 0;
     height: 1px;
     background: linear-gradient(to right, transparent, #ccc, transparent);
+    align-self: stretch;
+    width: 100%;
+}
+
+.short-feed-separator {
+    margin: 10px 0 0 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-review), transparent);
+    align-self: stretch;
+    width: 100%;
 }
 
 .content form .file-input {
@@ -221,7 +244,7 @@ nav a:visited{
     color: black;
     font-weight: normal;
     background-color: white;
-    border: 1px solid #0898ec;
+    border: 1px solid var(--color-review);
     height : 250px;
     border-radius: 16px;
     padding: 5px;
@@ -230,12 +253,12 @@ nav a:visited{
 
 .content form textarea:focus {
     outline: none;
-    border: 1px solid #0898ec;
+    border: 1px solid var(--color-review);
     box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
 }
 
 .content .create_ticket_block form input[type="text"] {
-    border: 1px solid #F28C38;
+    border: 1px solid var(--color-ticket);
 }
 
 .content .create_ticket_block form input[type="text"]:focus {
@@ -243,7 +266,7 @@ nav a:visited{
 }
 
 .content .create_ticket_block form textarea {
-    border: 1px solid #F28C38;
+    border: 1px solid var(--color-ticket);
 }
 
 .content .create_ticket_block form textarea:focus {
@@ -267,27 +290,46 @@ nav a:visited{
     justify-content: left;
 }
 
-.content .ticket_details {
-    margin: 20px 10px;
-    border: 1px solid #F28C38;
-    border-radius: 8px;
-    padding: 0 10px;
+.content .post {
     color: black;
-    background-color: rgba(242, 140, 56, 0.2);
-    border-left: 6px solid #F28C38;
-    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
     font-size: 16px;
+    border-radius: var(--radius-sm);
 }
 
-.content .ticket_details:hover, .content .review_details:hover  {
+.content .post:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.content .ticket_details .ticket_title, .content .review_details .ticket_title{
+.content .post--ticket {
+    margin: 20px 10px;
+    border: 1px solid var(--color-ticket);
+    padding: 0 10px;
+    /*background-color: rgba(242, 140, 56, 0.2);*/
+    background-color: #ead4c1;
+    border-left: 6px solid var(--color-ticket);
+    box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
+}
+
+.content .post--ticket .ticket_title, .content .post--review .ticket_title{
     font-weight: bold;
 }
 
-.content .ticket_details h4, .content .review_details h4 {
+.description {
+    font-family: "Bahnschrift";
+    line-height: 150%;
+}
+
+.post--review .description {
+    background-color: rgba(8, 152, 236, 5%);
+    border-bottom: 1px solid rgba(8, 152, 236, 50%);
+}
+
+.post--ticket .description {
+    background-color: rgba(242, 140, 56, 0.1);
+    border-bottom: 1px solid rgba(242, 140, 56, 0.5);
+}
+
+.post--ticket h4, .post--review h4 {
     text-align: center;
     font-size: 15px;
     font-weight: normal;
@@ -295,7 +337,7 @@ nav a:visited{
     text-decoration: underline;
 }
 
-.content .ticket_details h5, .content .review_details h5 {
+.post--ticket h5, .post--review h5 {
     margin: -20px 5px 0 0;
     justify-content: center;
     text-align: center;
@@ -303,9 +345,9 @@ nav a:visited{
     font-weight: normal;
 }
 
-.content .ticket_details .ticket_title {
-    border: 1px solid #F28C38;
-    border-right: 6px solid #F28C38;
+.content .post--ticket .ticket_title {
+    border: 1px solid var(--color-ticket);
+    border-right: 6px solid var(--color-ticket);
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
     background: white;
@@ -314,11 +356,21 @@ nav a:visited{
     padding-left: 10px;
     padding-right: 10px;
     width: fit-content;
+    font-family: "Bahnschrift";
 }
 
-.content .review_details .review_title {
-    border: 1px solid #0898ec;
-    border-right: 6px solid #0898ec;
+.content .post--review {
+    margin: 0 10px;
+    border: 1px solid var(--color-review);
+    padding: 0 5px 10px 5px;
+    background-color: rgba(8, 152, 236, 5%);
+    border-left: 6px solid var(--color-review);
+    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
+}
+
+.content .post--review .review_title {
+    border: 1px solid var(--color-review);
+    border-right: 6px solid var(--color-review);
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
     background: white;
@@ -327,21 +379,10 @@ nav a:visited{
     padding-left: 10px;
     padding-right: 10px;
     width: fit-content;
+    font-family: "Bahnschrift";
 }
 
-.content .review_details {
-    margin: 0 10px;
-    border: 1px solid #0898ec;
-    border-radius: 8px;
-    padding: 0 5px 10px 5px;
-    color: black;
-    background-color: rgba(8, 152, 236, 5%);
-    border-left: 6px solid #0898ec;
-    box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.2);
-    font-size: 16px;
-}
-
-.content .review_details .review_title_rating {
+.content .post--review .review_title_rating {
     display: flex;
     gap: 10px;
     font-size: 16px;
@@ -358,15 +399,23 @@ nav a:visited{
     justify-content: center;
     align-items: center;
     color: #E67E22;
-    background-color: rgba(8, 152, 236, 0.1);
+    background-color: rgba(8, 152, 236, 0.05);
     border-radius: 16px;
     padding: 0 5px;
-    border: 1px solid #F28C38;
+    border: 1px solid var(--color-ticket);
 }
 
 .content .star:hover {
     box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.content .follow_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 .content .follow {
@@ -390,26 +439,26 @@ nav a:visited{
 }
 
 .content .following {
-    border: 1px solid #0898ec;
-    border-left: 6px solid #0898ec;
-    border-right: 6px solid #0898ec;
+    border: 1px solid var(--color-review);
+    border-left: 6px solid var(--color-review);
+    border-right: 6px solid var(--color-review);
     box-shadow: 0 0 0 3px rgba(8, 152, 236, 0.3);
-    color:#0898ec;
+    color:var(--color-review);
 }
 
 .content .followedby{
-    border: 1px solid #F28C38;
-    border-left: 6px solid #F28C38;
-    border-right: 6px solid #F28C38;
+    border: 1px solid var(--color-ticket);
+    border-left: 6px solid var(--color-ticket);
+    border-right: 6px solid var(--color-ticket);
     box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.3);
-    color: #F28C38;
+    color: var(--color-ticket);
 }
 
 .content .follow a {
-    border: 1px solid #0898ec;
+    border: 1px solid var(--color-review);
     border-radius: 8px;
     text-decoration: none;
-    background-color: #0898ec;
+    background-color: var(--color-review);
     padding: 5px;
     color: white;
     width: 140px;
@@ -427,11 +476,11 @@ nav a:visited{
 }
 
 .content .p_following {
-    color: #0898ec;
+    color: var(--color-review);
 }
 
 .content .p_followedby {
-    color: #F28C38;
+    color: var(--color-ticket);
 }
 
 .content .follow_title {
@@ -451,51 +500,20 @@ nav a:visited{
     width: 100%;
 }
 
-.content .follow_submit_p input[type="submit"] {
-    background-color: black;
-    border: 1px solid black;
-}
-
 .content .follow_submit_delete {
     display: flex;
     justify-content: center;
 }
 
-.content .follow_submit_delete input[type="submit"] {
-    background-color: #0898ec;
-    border: 1px solid #0898ec;
-}
-
-.content .add_ticket_button, .content .add_review_button {
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 8px;
-    padding: 8px 25px;
+.content .add_button {
     width: 230px;
     height: 40px;
-    font-size: 16px;
-    color: white;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 15px;
-    border: 1px solid #F28C38;
-    background-color: #F28C38;
 }
 
-.content .add_ticket_button {
-    border: 1px solid #F28C38;
-    background-color: #F28C38;
-}
-
-.content .add_review_button {
-    border: 1px solid #0898ec;
-    background-color: #0898ec;
-}
-
-.content .add_review_button:hover, .content .add_ticket_button:hover {
+.content .add_button:hover {
     transform: translateY(-1px);
-    font-weight: bold;
-    align-items: center;
+    font-size: 18px;
 }
 
 .content .modify_buttons {
@@ -505,10 +523,7 @@ nav a:visited{
     gap: 10px;
 }
 
-.content .ticket_details .modify_buttons .update_button,
-.content .ticket_details .modify_buttons .delete_button,
-.content .review_details .modify_buttons .update_button,
-.content .review_details .modify_buttons .delete_button {
+.change {
     display: inline-block;
     text-decoration: none;
     border-radius: 8px;
@@ -521,25 +536,7 @@ nav a:visited{
     margin-bottom: 15px;
 }
 
-.content .review_details .modify_buttons .update_button, .content .review_details .modify_buttons .delete_button {
-    border: 1px solid #0898ec;
-    background-color: #0898ec;
-}
-
-.content .ticket_details .modify_buttons .update_button, .content .ticket_details .modify_buttons .delete_button {
-    border: 1px solid #F28C38;
-    background-color: #F28C38;
-}
-
-.content .ticket_details .modify_buttons .update_button:hover,
-.content .ticket_details .modify_buttons .delete_button:hover,
-.content .review_details .modify_buttons .update_button:hover,
-.content .review_details .modify_buttons .delete_button:hover {
-    transform: translateY(-1px);
-    font-weight: bold;
-}
-
-.content .feed_buttons {
+.content .add_buttons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -549,7 +546,7 @@ nav a:visited{
     width: 100%;
 }
 
-.content .postspage_details, .content .feedpage_details, .content .follow_block  {
+.content .postspage_details, .content .feedpage_details, .content .followpage_details  {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -557,17 +554,29 @@ nav a:visited{
     width: 100%;
 }
 
+.content .followpage_details  {
+    padding-bottom: 30px;
+}
+
 .content .pagination {
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    width: 100%;
-    color: black;
-    height: 50px;
-    margin: 30px 0;
+    color: var(--color-dark);
+    height: fit-content;
+
+    background: white;
+    margin-bottom: 0;
+    padding: 10px 10px;
+    width: fit-content;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+
 }
 
 .content .pagination hr {
@@ -578,23 +587,25 @@ nav a:visited{
     display: inline-block;
     border: 1px solid black;
     background-color: transparent;
-    border-radius: 16px;
-    padding: 5px;
+    border-radius: 8px;
+    padding: 5px 10px;
     text-decoration: none;
-    color: black;
+    color: var(--color-dark);
     margin: 5px;
 }
 
 .content .pagination a:hover {
-    background-color: rgba(8, 152, 236, 0.1);
-}
-
-.content .pagination a:visited {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     color: black;
 }
 
+.content .pagination a:visited {
+    color: var(--color-dark);
+}
+
 /* WCAG */
-body.high-contrast nav a, body.high-contrast .header nav a:visited {
+body.high-contrast nav a, body.high-contrast header nav a:visited {
     color: black;
     text-decoration: none;
 }
@@ -635,12 +646,16 @@ body.high-contrast .content .create_ticket_block p {
     color: black;
 }
 
-body.high-contrast .content .create_ticket_block .custom-file-btn,
-body.high-contrast .content .create_review_block .custom-file-btn  {
+body.high-contrast .button {
     background-color: black;
     border: 1px solid black;
     color: white;
     font-size: 16px;
+}
+
+body.high-contrast .button:hover {
+    text-decoration: underline;
+    font-size: 18px;
 }
 
 body.high-contrast .content .create_review_block .review_article,
@@ -653,48 +668,46 @@ body.high-contrast .content label {
     font-size: 18px;
 }
 
-body.high-contrast .content .ticket_details {
+body.high-contrast .content .post--ticket {
     background-color: rgba(242, 140, 56, 0.1);
+}
+
+body.high-contrast .content .follow a {
+    border: 1px solid black;
+    background-color: black;
+}
+
+body.high-contrast .content .follow a:hover {
+    text-decoration: underline;
 }
 
 body.high-contrast .content .star {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-body.high-contrast .content .add_review_button,
-body.high-contrast .content .add_ticket_button,
-body.high-contrast .content .review_details .modify_buttons .update_button,
-body.high-contrast .content .review_details .modify_buttons .delete_button,
-body.high-contrast .content .ticket_details .modify_buttons .update_button,
-body.high-contrast .content .ticket_details .modify_buttons .delete_button
-{
+body.high-contrast .content .button,
+body.high-contrast .content .change {
     font-size: 16px;
     font-weight: bold;
     background-color: white;
-    width: 250px;
-    height: 40px;
+    color: black;
+
 }
 
-body.high-contrast .content .add_review_button,
-body.high-contrast .content .review_details .modify_buttons .update_button,
-body.high-contrast .content .review_details .modify_buttons .delete_button  {
-    color: #0898ec;
-    border: 1px solid #0898ec;
+body.high-contrast .content .button--file{
+    width: 180px;
 }
 
-body.high-contrast .content .add_ticket_button,
-body.high-contrast .content .ticket_details .modify_buttons .update_button,
-body.high-contrast .content .ticket_details .modify_buttons .delete_button  {
-    color: #F28C38;
-    border: 1px solid #F28C38;
+body.high-contrast .content .button--review {
+    border: 1px solid var(--color-review);
 }
 
-body.high-contrast .content .add_review_button:hover,
-body.high-contrast .content .add_ticket_button:hover,
-body.high-contrast .content .review_details .modify_buttons .update_button:hover,
-body.high-contrast .content .review_details .modify_buttons .delete_button:hover,
-body.high-contrast .content .ticket_details .modify_buttons .update_button:hover,
-body.high-contrast .content .ticket_details .modify_buttons .delete_button:hover
+body.high-contrast .content .button--ticket {
+    border: 1px solid var(--color-ticket);
+}
+
+body.high-contrast .content .button:hover,
+body.high-contrast .content .change:hover
 {
     font-size: 18px;
 }
@@ -710,12 +723,12 @@ body.high-contrast .content .pagination a:hover {
 
 /* Tablet */
 @media (min-width: 415px) and (max-width: 810px) {
-    .header .contraste-btn {
-        margin: 47px 6px;
+    header .contraste-btn {
+        margin: 46px 6px;
     }
 
 
-    .header nav {
+    header nav {
         margin-top: -48px;
         justify-content: right;
         gap: 0;
@@ -733,13 +746,13 @@ body.high-contrast .content .pagination a:hover {
         margin-left: 280px;
     }
 
-    .content .ticket_details {
+    .content .post--ticket {
         width: 650px;
         margin: 20px 40px;
         justify-content: center;
     }
 
-    .content .review_details {
+    .content .post--review {
         width: 750px;
         margin: 20px 20px;
         justify-content: center;
@@ -749,7 +762,7 @@ body.high-contrast .content .pagination a:hover {
         max-width: 500px;
     }
 
-    .content .feed_buttons {
+    .content .add_buttons {
         flex-direction: row;
         margin-top: 30px;
         margin-bottom: 0;
@@ -759,7 +772,7 @@ body.high-contrast .content .pagination a:hover {
 
     .content .pagination {
         flex-direction: row;
-        margin: 10px 0;
+        margin: 0;
     }
 
     .menu_selected {
@@ -778,8 +791,8 @@ body.high-contrast .content .pagination a:hover {
         gap: 0;
     }
 
-    .header .contraste-btn {
-        margin: 45px 6px;
+    header .contraste-btn {
+        margin: 44px 6px;
     }
 
     .content h3 {
@@ -812,23 +825,23 @@ body.high-contrast .content .pagination a:hover {
         justify-content: left;
     }
 
-    .content .ticket_details {
+    .content .post--ticket {
         width: 650px;
         margin: 20px 60px;
         justify-content: left;
     }
 
-    .content .review_details {
+    .content .post--review {
         width: 800px;
         margin: 20px 20px;
         justify-content: left;
     }
 
-    .content .ticket_details h4, .content .review_details h4 {
+    .content .post--ticket h4, .content .post--review h4 {
         text-align: left;
     }
 
-    .content .ticket_details h5, .content .review_details h5 {
+    .content .post--ticket h5, .content .post--review h5 {
         margin: -40px 5px 0 0;
         justify-content: right;
         text-align: right;
@@ -843,8 +856,12 @@ body.high-contrast .content .pagination a:hover {
         max-width: 600px;
     }
 
-    .content .review_details .review_title_rating {
+    .content .post--review .review_title_rating {
         justify-content: left;
+    }
+
+    .content .actions_buttons {
+        justify-content: right;
     }
 
     .content .follow {
@@ -874,7 +891,7 @@ body.high-contrast .content .pagination a:hover {
         margin-right: 6px;
     }
 
-    .content .feed_buttons {
+    .content .add_buttons {
         gap: 150px;
         width: 100%;
         flex-direction: row;
@@ -883,7 +900,7 @@ body.high-contrast .content .pagination a:hover {
 
     .content .pagination {
         flex-direction: row;
-        margin: 10px 0;
+        margin: 0;
     }
 
     .menu_selected {
@@ -892,8 +909,14 @@ body.high-contrast .content .pagination a:hover {
 
     }
 
+    .follow_submit_p {
+        width: 100%;
+        justify-content: right;
+
+    }
+
     /* WCAG */
-    body.high-contrast nav a, body.high-contrast .header nav a:visited {
+    body.high-contrast nav a, body.high-contrast header nav a:visited {
         font-size: 14px;
     }
 

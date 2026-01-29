@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'base_public.html' %}
+
 {% block content %}
 
 <br>
@@ -10,7 +11,7 @@
 </div>
 {% endif %}
 
-<section class="content">
+<section class="content" aria-roledescription="region">
     <div class="subscribe_block">
         <h2>Inscrivez-vous</h2>
         <form action="" method="POST">
@@ -30,14 +31,14 @@
             {% endfor %}
             <div class="form-actions">
                 <button type="button"
-                        class="cancel_button"
+                        class="button button--cancel"
                         title="Bouton retour"
                         onclick="window.location.href='../home/'">
                     Retourner
                 </button>
 
                 <button type="submit"
-                        class="subscription_button"
+                        class="button button--subscription"
                         title="Bouton s'inscrire">
                     S'inscrire
                 </button>

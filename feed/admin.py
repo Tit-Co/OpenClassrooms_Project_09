@@ -3,6 +3,7 @@ from django.utils.html import format_html
 
 from feed.models import Ticket, Review, UserFollows
 
+
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'description', 'image_preview', 'user', 'time_created')
 
@@ -24,8 +25,10 @@ class TicketAdmin(admin.ModelAdmin):
 
     image_preview.short_description = "Image"
 
+
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('id', 'ticket', 'headline', 'body', 'user', 'time_created')
+
 
 class UserFollowsAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'followed_user')

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="title">LitReview</title>
+        <link id="core_css" rel="stylesheet" href="{% static 'core/styles.css' %}">
+    </head>
+    <body>
+        <header role="banner">
+            <a class="contraste-btn" id="contrast-btn" title="Bouton contraste" href="#">
+                <img class="eye_logo"
+                     alt="Image oeil"
+                     title="Image Contaste +"
+                     src="{% static 'core/images/eye.png' %}"><div>CONTRASTE ✚</div></a>
+            <h1>LITReview</h1>
+        </header>
+
+        <main role="main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="footer" role="contentinfo">
+            <p>© 2026 - Nicolas MARIE - OpenClassrooms</p>
+        </footer>
+    <script>
+        const btn = document.getElementById('contrast-btn');
+        const STORAGE_KEY = 'high_contrast_enabled';
+
+        if (localStorage.getItem(STORAGE_KEY) === 'true') {
+            document.body.classList.add('high-contrast');
+        }
+
+        if (btn) {
+            btn.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                document.body.classList.toggle('high-contrast');
+
+                const isEnabled = document.body.classList.contains('high-contrast');
+                localStorage.setItem(STORAGE_KEY, isEnabled);
+            });
+        }
+    </script>
+    <script>
+        const path = window.location.pathname;
+
+        const title = {
+            '/sign_up/': 'LitReview - Inscription',
+            '/log_in/': 'LitReview - Connexion',
+        };
+
+        for (const prefix in title) {
+            if (path.startsWith(prefix)) {
+                document.getElementById("title").innerText = title[prefix];
+                break;
+            }
+        }
+    </script>
+    </body>
+</html>

@@ -1,11 +1,11 @@
 {% load feed_extras %}
-<div class="review_details">
+<div class="post post--review">
     <h4>{% get_poster_display review.user %} publié une critique</h4>
 
-    <h5>{{ review.time_created }}</h5>
+    <h5>{{ review.time_created }} ⯇</h5>
 
     <div class="review_title_rating">
-        <p class="review_title">{{ review.headline }}</p><p>-</p>
+        <p class="review_title">{{ review.headline }}</p><p>•</p>
         {% if review.rating == 0 %}
             <p class="star">✰ ✰ ✰ ✰ ✰</p>
         {% endif %}
@@ -31,18 +31,16 @@
     <div class="feed-separator"></div>
 
     {% if target == 'feed' %}
-        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='feed' has_time=False change=change header=header %}
+        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='feed' has_time=False header=header %}
 
     {% elif target == 'post' %}
-        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='post' has_time=False change=change header=header %}
+        {% include 'feed/partials/ticket_snippet.html' with ticket=review.ticket target='post' has_time=False header=header %}
         <div class="modify_buttons">
-            {% if perms.feed.change_review %}
-                <a class="update_button"
+            {% if review.user == request.user %}
+                <a class="button button--review"
                    title="Bouton Modifier"
                    href="{% url 'feed:update-review' review_id=review.id %}">Modifier</a>
-            {% endif %}
-            {% if perms.feed.delete_review %}
-                <a class="delete_button"
+                <a class="button button--review"
                    title="Bouton Supprimer"
                    href="{% url 'feed:delete-review' review_id=review.id %}">Supprimer</a>
             {% endif %}

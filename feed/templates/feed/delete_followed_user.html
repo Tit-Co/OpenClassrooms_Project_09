@@ -1,20 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'base_feed.html' %}
 {% block content %}
 
-<section class="content">
+<section class="content" aria-roledescription="region">
     <div class="follow_block">
         <h2>Supprimer un utilisateur suivi</h2>
-         <form action="" method="post" enctype="multipart/form-data">
-         {% csrf_token %}
+        <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-                <h3>Etes-vous sur de vouloir supprimer cet utilisateur ?</h3>
-                <br>
+        <h3>Etes-vous sur de vouloir supprimer cet utilisateur ?</h3>
+        <br>
 
-                <p class="following">{{username}}</p>
+        <p class="following">{{username}}</p>
 
-                <p class="follow_submit_delete">
-                    <input class="ticket_submit_button" title="Supprimer" type="submit" value="Supprimer">
-                </p>
+        <div class="actions_buttons">
+            <a class="button button--review"
+               title="Bouton Retourner"
+               href="{% url 'feed:posts' %}">Retourner</a>
+
+            <p class="follow_submit_delete">
+                <input class="button button--review" title="Supprimer" type="submit" value="Supprimer">
+            </p>
+        </div>
+
         </form>
     </div>
 </section>
