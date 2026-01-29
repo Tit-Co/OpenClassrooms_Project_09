@@ -97,7 +97,7 @@ Or
 
 ### Launching the website
 - Open a web browser
-- And type the URL : `http://127.0.0.1:8000/home/`
+- And type the URL : `http://127.0.0.1:8000/`
 ---
 
 ## EXAMPLES
