@@ -10,4 +10,4 @@ def index(request):
     Returns:
         An HttpResponseRedirect to accounts application login page.
     """
-    return redirect(to='../log_in/')
+    return redirect(to='../accounts/log_in/')

@@ -21,16 +21,13 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from core import views as core_views
-from accounts import views as accounts_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', core_views.index, name='index'),
-    path('log_in/', accounts_views.log_in, name='log-in'),
-    path('sign_up/', accounts_views.sign_up, name='sign-up'),
+    path('', core_views.index, name='index'),
+    path('accounts/', include('accounts.urls')),
     path('feed/', include('feed.urls')),
-    path('log_out/', accounts_views.log_out, name='log-out'),
 ]
 
 if settings.DEBUG:

@@ -40,8 +40,8 @@ The application must:
 
 ## PROJECT STRUCTURE
 <p align="center">
-<img src="./structure_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-<img src="./structure_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+<img src="docs/structure_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+<img src="docs/structure_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 ---
@@ -104,55 +104,55 @@ Or
 
 - Home page (sign up or log in)
 <p align="center">
-    <img src="./screenshots/homepage_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/homepage_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Sign up form
 <p align="center">
-    <img src="./screenshots/signin_form_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/signin_form_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Feed page
 <p align="center">
-    <img src="./screenshots/feed_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/feed_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/feed_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/feed_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Posts page
 <p align="center">
-    <img src="./screenshots/posts_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/posts_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/posts_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/posts_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Version for people with disabilities
 <p align="center">
-    <img src="./screenshots/disabilities_version_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/disabilities_version_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/disabilities_version_3.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/disabilities_version_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/disabilities_version_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/disabilities_version_3.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Tickets creation page
 <p align="center">
-    <img src="./screenshots/ticket_creation_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/ticket_creation_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Reviews creation page
 <p align="center">
-    <img src="./screenshots/review_creation_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/review_creation_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/review_creation_screenshot_2.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/review_creation_screenshot_1.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 - Update posts and reviews pages
 <p align="center">
-    <img src="./screenshots/update_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
-    <img src="./screenshots/delete_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/update_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/delete_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 ## PEP 8 CONVENTIONS
 
 - Flake 8 report
 <p align="center">
-    <img src="./screenshots/flake8_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+    <img src="docs/screenshots/flake8_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
 ---

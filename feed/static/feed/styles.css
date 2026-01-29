@@ -158,11 +158,8 @@ nav a:visited{
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.content h2 {
-    font-family: "Futura";
+.content .section_title {
     background: white;
-    margin-top: 0;
-    padding: 20px 10px;
     width: fit-content;
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
@@ -171,6 +168,12 @@ nav a:visited{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0px 10px 20px 10px;
+    margin-top: 0;
+}
+
+.content .section_title h2 {
+    font-family: "Futura";
 }
 
 .content h3 {
@@ -423,6 +426,13 @@ nav a:visited{
     justify-content: center;
     gap: 5px;
     flex-direction: column;
+}
+
+.content .follow .empty {
+    color: black;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 14px;
 }
 
 .content .form-input {
