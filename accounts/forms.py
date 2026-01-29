@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
@@ -7,6 +8,21 @@ User = get_user_model()
 
 
 class SignupForm(UserCreationForm):
+    username = forms.CharField(help_text='Nom d\'utilisateur', widget=forms.TextInput(attrs={
+        'placeholder': 'Nom d\'utilisateur',
+        'class': 'form-input'
+    }))
+
+    password1 = forms.CharField(help_text='Mot de passe', widget=forms.PasswordInput(attrs={
+        'placeholder': 'Mot de passe',
+        'class': 'form-input'
+    }))
+
+    password2 = forms.CharField(help_text='Confirmer mot de passe', widget=forms.PasswordInput(attrs={
+        'placeholder': 'Confirmer mot de passe',
+        'class': 'form-input'
+    }))
+
     class Meta:
         model = User
         fields = ("username",)
@@ -17,27 +33,6 @@ class SignupForm(UserCreationForm):
         "password_entirely_numeric": "Le mot de passe ne peut pas être uniquement numérique.",
         "password_too_similar": "Le mot de passe est trop proche de votre nom d’utilisateur.",
     }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields["username"].widget.attrs.update({
-            "placeholder": "Nom d'utilisateur",
-            "class": "form-input",
-        })
-
-        self.fields["password1"].widget.attrs.update({
-            "placeholder": "Mot de passe",
-            "class": "form-input",
-        })
-
-        self.fields["password2"].widget.attrs.update({
-            "placeholder": "Confirmer mot de passe",
-            "class": "form-input",
-        })
-
-        for field in self.fields.values():
-            field.label = ""
 
     def clean_username(self):
         """
@@ -75,22 +70,16 @@ class SignupForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    username = forms.CharField(help_text='Nom d\'utilisateur', widget=forms.TextInput(attrs={
+        'placeholder': 'Nom d\'utilisateur',
+        'class': 'form-input'
+    }))
+
+    password = forms.CharField(help_text='Mot de passe', widget=forms.PasswordInput(attrs={
+        'placeholder': 'Mot de passe',
+        'class': 'form-input'
+    }))
+
     class Meta:
         model = User
         fields = ("username",)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields["username"].widget.attrs.update({
-            "placeholder": "Nom d'utilisateur",
-            "class": "form-input",
-        })
-
-        self.fields["password"].widget.attrs.update({
-            "placeholder": "Mot de passe",
-            "class": "form-input",
-        })
-
-        for field in self.fields.values():
-            field.label = ""
