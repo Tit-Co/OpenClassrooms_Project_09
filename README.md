@@ -148,6 +148,12 @@ Or
     <img src="./screenshots/delete_ticket_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
 </p>
 
+## PEP 8 CONVENTIONS
+
+- Flake 8 report
+<p align="center">
+    <img src="./screenshots/flake8_screenshot.png" width="auto" style="border: 1px solid grey; border-radius: 10px;">
+</p>
 
 ---
 
