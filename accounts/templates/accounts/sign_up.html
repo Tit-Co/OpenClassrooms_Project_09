@@ -14,7 +14,7 @@
 <section class="content" aria-roledescription="region">
     <div class="subscribe_block">
         <h2>Inscrivez-vous</h2>
-        <form action="" method="POST">
+        <form method="POST">
             {% csrf_token %}
             {% for field in signup_form %}
                 <div class="form-group">

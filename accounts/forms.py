@@ -8,17 +8,17 @@ User = get_user_model()
 
 
 class SignupForm(UserCreationForm):
-    username = forms.CharField(help_text='Nom d\'utilisateur', widget=forms.TextInput(attrs={
+    username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Nom d\'utilisateur',
         'class': 'form-input'
     }))
 
-    password1 = forms.CharField(help_text='Mot de passe', widget=forms.PasswordInput(attrs={
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Mot de passe',
         'class': 'form-input'
     }))
 
-    password2 = forms.CharField(help_text='Confirmer mot de passe', widget=forms.PasswordInput(attrs={
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Confirmer mot de passe',
         'class': 'form-input'
     }))
@@ -70,12 +70,12 @@ class SignupForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(help_text='Nom d\'utilisateur', widget=forms.TextInput(attrs={
+    username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Nom d\'utilisateur',
         'class': 'form-input'
     }))
 
-    password = forms.CharField(help_text='Mot de passe', widget=forms.PasswordInput(attrs={
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Mot de passe',
         'class': 'form-input'
     }))

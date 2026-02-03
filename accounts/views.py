@@ -21,7 +21,7 @@ def log_in(request: HttpRequest) -> HttpResponse:
         if login_form.is_valid():
             user = login_form.get_user()
             login(request, user)
-            messages.success(request, f"✅ {user.get_username().capitalize()}, connexion réussie.")
+            messages.success(request, f"✅ {user.get_username()}, connexion réussie.")
             return redirect('feed:feed')
         else:
             messages.error(request=request, message="❌ Identifiants incorrects.")
@@ -45,7 +45,7 @@ def sign_up(request: HttpRequest) -> HttpResponse:
         if signup_form.is_valid():
             user = signup_form.save()
             login(request=request, user=user)
-            messages.success(request, f"✅ {user.get_username().capitalize()}, inscription réussie. "
+            messages.success(request, f"✅ {user.get_username()}, inscription réussie. "
                                       f"Vous êtes maintenant connecté.")
             return redirect('feed:feed')
         else:
