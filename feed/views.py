@@ -317,6 +317,9 @@ def delete_review(request: HttpRequest, review_id: int) -> HttpResponse:
     """
     review = Review.objects.get(id=review_id)
     ticket = review.ticket
+
+    ticket.user_has_reviewed = ticket.has_user_review(user=request.user)
+
     if request.method == 'POST':
         review.delete()
         messages.success(request=request, message="✅ Critique correctement supprimée.")

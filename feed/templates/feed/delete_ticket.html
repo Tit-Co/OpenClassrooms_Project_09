@@ -9,7 +9,7 @@
          <form action="" method="post" enctype="multipart/form-data">
          {% csrf_token %}
 
-                <h3>Etes-vous sur de vouloir supprimer ce ticket ?</h3>
+                <h3>Etes-vous sûr de vouloir supprimer ce ticket ?</h3>
                 {% include 'feed/partials/ticket_snippet.html' with target='review' has_time=True %}
 
                 <div class="actions_buttons">

@@ -9,8 +9,8 @@
          <form action="" method="post" enctype="multipart/form-data">
          {% csrf_token %}
 
-                <h3>Etes-vous sur de vouloir supprimer cette critique ?</h3>
-                {% include 'feed/partials/review_snippet.html' with target='feed' header=false %}
+                <h3>Etes-vous sûr de vouloir supprimer cette critique ?</h3>
+                {% include 'feed/partials/review_snippet.html' with target='feed' header=False %}
 
                 <div class="actions_buttons">
                     <a class="button button--review"
