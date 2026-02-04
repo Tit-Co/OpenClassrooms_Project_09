@@ -9,7 +9,7 @@ from django.db import models
 from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse, JsonResponse
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from accounts.models import User
 from feed.forms import TicketForm, ReviewForm, FollowUsersForm
@@ -142,7 +142,7 @@ def update_ticket(request: HttpRequest, ticket_id: int) -> HttpResponse:
         An HttpResponseRedirect to the feed page afet ticket update or
         an HttpResponse with the update ticket form and its content to update.
     """
-    ticket = Ticket.objects.get(id=ticket_id)
+    ticket = get_object_or_404(Ticket, id=ticket_id, user=request.user)
 
     if request.method == 'POST':
         ticket_form = TicketForm(request.POST, request.FILES, instance=ticket)
@@ -173,7 +173,8 @@ def delete_ticket(request: HttpRequest, ticket_id: int) -> HttpResponse:
         An HttpResponseRedirect to the feed page afet ticket delete or
         An HttpResponse of the delete page with the ticket to delete.
     """
-    ticket = Ticket.objects.get(id=ticket_id)
+    ticket = get_object_or_404(Ticket, id=ticket_id, user=request.user)
+
     if request.method == 'POST':
         ticket.delete()
         messages.success(request=request, message="✅ Ticket correctement supprimé.")
@@ -243,7 +244,7 @@ def create_review_by_answer(request: HttpRequest, ticket_id: int) -> HttpRespons
         An HttpResponseRedirect to the feed page after review creation or
         An HttpResponse to the creation by answer page with the forms of the new review and its ticket.
     """
-    ticket = Ticket.objects.get(id=ticket_id)
+    ticket = get_object_or_404(Ticket, id=ticket_id, user=request.user)
 
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
@@ -285,7 +286,8 @@ def update_review(request, review_id):
         An HttpResponseRedirect to the feed page after review update or
         An HttpResponse to the review update page with the form of the review to update and its content.
     """
-    review = Review.objects.get(id=review_id)
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+
     ticket = review.ticket
 
     if request.method == 'POST':
@@ -317,7 +319,8 @@ def delete_review(request: HttpRequest, review_id: int) -> HttpResponse:
         An HttpResponseRedirect to the feed page after review delete or
         An HttpResponse to the delete confirmation page with the review to delete.
     """
-    review = Review.objects.get(id=review_id)
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+
     ticket = review.ticket
 
     ticket.user_has_reviewed = ticket.has_user_review(user=request.user)
