@@ -244,7 +244,7 @@ def create_review_by_answer(request: HttpRequest, ticket_id: int) -> HttpRespons
         An HttpResponseRedirect to the feed page after review creation or
         An HttpResponse to the creation by answer page with the forms of the new review and its ticket.
     """
-    ticket = get_object_or_404(Ticket, id=ticket_id, user=request.user)
+    ticket = Ticket.objects.get(id=ticket_id)
 
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
