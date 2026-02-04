@@ -201,6 +201,8 @@ def create_review(request: HttpRequest) -> HttpResponse:
 
             user.user_permissions.add(Permission.objects.get(codename='change_review'))
             user.user_permissions.add(Permission.objects.get(codename='delete_review'))
+            user.user_permissions.add(Permission.objects.get(codename='change_ticket'))
+            user.user_permissions.add(Permission.objects.get(codename='delete_ticket'))
 
             ticket = Ticket.objects.create(
                 title=ticket_form.cleaned_data["title"],
