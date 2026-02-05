@@ -246,31 +246,35 @@ def create_review_by_answer(request: HttpRequest, ticket_id: int) -> HttpRespons
     """
     ticket = Ticket.objects.get(id=ticket_id)
 
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            user = request.user
-
-            user.user_permissions.add(Permission.objects.get(codename='change_review'))
-            user.user_permissions.add(Permission.objects.get(codename='delete_review'))
-
-            Review.objects.create(
-                ticket=ticket,
-                headline=review_form.cleaned_data["headline"],
-                rating=review_form.cleaned_data["rating"],
-                body=review_form.cleaned_data["body"],
-                user=user,
-            )
-            messages.success(request=request, message="✅ Critique correctement publiée.")
-            return redirect(to='feed:feed')
-        else:
-            messages.error(request=request, message="❌ La publication de la critique a échoué. Veuillez réessayer.")
+    if Review.objects.filter(ticket=ticket, user=request.user).exists():
+        messages.error(request=request, message="❌ Vous avez déjà publié une critique sur ce ticket.")
+        return redirect(to='feed:feed')
     else:
-        review_form = ReviewForm()
+        if request.method == 'POST':
+            review_form = ReviewForm(request.POST)
+            if review_form.is_valid():
+                user = request.user
 
-    return render(request=request,
-                  template_name='feed/create_review_by_answer.html',
-                  context={'ticket': ticket, 'review_form': review_form})
+                user.user_permissions.add(Permission.objects.get(codename='change_review'))
+                user.user_permissions.add(Permission.objects.get(codename='delete_review'))
+
+                Review.objects.create(
+                    ticket=ticket,
+                    headline=review_form.cleaned_data["headline"],
+                    rating=review_form.cleaned_data["rating"],
+                    body=review_form.cleaned_data["body"],
+                    user=user,
+                )
+                messages.success(request=request, message="✅ Critique correctement publiée.")
+                return redirect(to='feed:feed')
+            else:
+                messages.error(request=request, message="❌ La publication de la critique a échoué. Veuillez réessayer.")
+        else:
+            review_form = ReviewForm()
+
+        return render(request=request,
+                      template_name='feed/create_review_by_answer.html',
+                      context={'ticket': ticket, 'review_form': review_form})
 
 
 @login_required
