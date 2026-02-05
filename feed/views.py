@@ -246,7 +246,11 @@ def create_review_by_answer(request: HttpRequest, ticket_id: int) -> HttpRespons
     """
     ticket = Ticket.objects.get(id=ticket_id)
 
-    if Review.objects.filter(ticket=ticket, user=request.user).exists():
+    if not UserFollows.objects.filter(user=request.user, followed_user=ticket.user).exists():
+        messages.error(request=request, message="❌ Vous ne pouvez pas poster de critique sur ce ticket.")
+        return redirect(to='feed:feed')
+
+    elif Review.objects.filter(ticket=ticket, user=request.user).exists():
         messages.error(request=request, message="❌ Vous avez déjà publié une critique sur ce ticket.")
         return redirect(to='feed:feed')
     else:
