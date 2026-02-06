@@ -26,13 +26,13 @@ def feed_index(request: HttpRequest) -> HttpResponse:
     Returns:
         An HttpResponse with the feed page.
     """
-    tickets = list(get_users_viewable_tickets(user=request.user).annotate(
+    tickets = get_users_viewable_tickets(user=request.user).annotate(
         content_type=models.Value(value="Ticket", output_field=models.CharField())
-    ))
+    )
 
-    reviews = list(get_users_viewable_reviews(user=request.user).annotate(
+    reviews = get_users_viewable_reviews(user=request.user).annotate(
         content_type=models.Value(value="Review", output_field=models.CharField())
-    ))
+    )
 
     feed_posts = sorted(
         chain(tickets, reviews),
@@ -413,7 +413,10 @@ def get_users_viewable_tickets(user: AbstractUser) -> QuerySet[Ticket]:
         "followed_user", flat=True
     )
 
-    return Ticket.objects.filter(user__in=followed_users)
+    all_users = list(followed_users)
+    all_users.append(user)
+
+    return Ticket.objects.filter(user__in=all_users)
 
 
 def get_users_viewable_reviews(user: AbstractUser) -> QuerySet[Review]:
@@ -429,7 +432,10 @@ def get_users_viewable_reviews(user: AbstractUser) -> QuerySet[Review]:
         "followed_user", flat=True
     )
 
-    return Review.objects.filter(user__in=followed_users)
+    all_users = list(followed_users)
+    all_users.append(user)
+
+    return Review.objects.filter(user__in=all_users)
 
 
 def follow_compute_user(request: HttpRequest) -> JsonResponse:
