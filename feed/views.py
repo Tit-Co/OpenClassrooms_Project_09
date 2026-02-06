@@ -26,13 +26,13 @@ def feed_index(request: HttpRequest) -> HttpResponse:
     Returns:
         An HttpResponse with the feed page.
     """
-    tickets = get_users_viewable_tickets(user=request.user).annotate(
+    tickets = list(get_users_viewable_tickets(user=request.user).annotate(
         content_type=models.Value(value="Ticket", output_field=models.CharField())
-    )
+    ))
 
-    reviews = get_users_viewable_reviews(user=request.user).annotate(
+    reviews = list(get_users_viewable_reviews(user=request.user).annotate(
         content_type=models.Value(value="Review", output_field=models.CharField())
-    )
+    ))
 
     feed_posts = sorted(
         chain(tickets, reviews),
